@@ -50,36 +50,36 @@ body {
 }
 
 .product {
-    width: 30%;
-    max-width: 280px;
+    width: 25%;
+    max-width: 240px;
     text-align: center;
     border: 1px solid #2e2e2e;
-    padding: 10px;
+    padding: 8px;
     background-color: #1e1e1e;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    min-height: 400px; /* Фиксированная минимальная высота */
+    min-height: 320px; /* Фиксированная минимальная высота */
     justify-content: space-between; /* Распределяет пространство между содержимым и кнопкой */
 }
 
 .product img {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 6px;
 }
 
 .product-name {
     font-family: 'Xanmono', sans-serif;
     font-weight: bold;
-    font-size: 16px;
-    margin-top: 10px;
+    font-size: 14px;
+    margin-top: 6px;
 }
 
 .description {
     font-family: 'activistka_wide', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     color: #999;
-    margin-top: 6px;
+    margin-top: 4px;
     flex-grow: 1; /* Позволяет описанию занимать оставшееся пространство, не влияя на положение кнопки */
 }
 
@@ -100,14 +100,14 @@ body {
 .add-btn,
 .product button {
     font-family: 'activistka_wide', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     background-color: #00c853;
     color: black;
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    padding: 10px 20px;
-    margin-top: 8px;
+    padding: 8px 16px;
+    margin-top: 6px;
 }
 
 .add-btn:hover,
@@ -265,7 +265,7 @@ body {
 /* Адаптивность */
 @media (max-width: 768px) {
     .product {
-        width: 45%;
+        width: 40%;
     }
 }
 
