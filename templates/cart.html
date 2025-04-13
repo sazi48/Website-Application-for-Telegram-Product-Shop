@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="cart-title">Ваша корзина</h1>
+
+{% if not cart_items %}
+    <p style="text-align: center; color: white;">Корзина пуста.</p>
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="{{ url_for('catalog') }}" class="catalog-link">Перейти в каталог товаров</a>
+    </div>
+{% else %}
+    <div class="cart-container">
+        {% for item in cart_items %}
+        <div class="cart-item-card" data-id="{{ item.id }}">
+            <img src="/static/images/{{ item.image }}" alt="{{ item.name }}">
+            <div class="cart-item-name">{{ item.name }}</div>
+            <div class="cart-item-quantity" id="quantity-{{ item.id }}">{{ item.quantity }}</div>
+            <div class="cart-item-actions">
+                <button type="button" class="quantity-btn" onclick="updateQuantity({{ item.id }}, 'decrease')">−</button>
+                <button type="button" class="remove-btn" onclick="removeFromCart({{ item.id }})">Удалить</button>
+                <button type="button" class="quantity-btn" onclick="updateQuantity({{ item.id }}, 'increase')">+</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Кнопка оформления заказа -->
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="{{ url_for('order') }}" class="order-button">Оформить заказ</a>
+    </div>
+
+{% endif %}
+
+<style>
+    .order-button {
+        background-color: #28a745;
+        color: black;
+        font-family: 'activistka_wide', sans-serif; /* Шрифт как в шапке */
+        font-size: 18px;
+        font-weight: bold;
+        padding: 12px 28px;
+        border: none;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .order-button:hover {
+        background-color: #45c156;
+        transform: translateY(-2px);
+        text-decoration: none;
+        color: black;
+    }
+
+    .order-button:active {
+        background-color: #1e7e34;
+        color: black;
+    }
+</style>
+
+<!-- JS -->
+
+<script>
+    function updateOrderButtonVisibility() {
+    const orderButton = document.querySelector('.order-button');
+    const items = document.querySelectorAll('.cart-item-card');
+    if (orderButton) {
+        if (items.length === 0) {
+            orderButton.classList.add('fade-out');
+            setTimeout(() => orderButton.remove(), 500); // удалим после плавного исчезновения
+        } else {
+            orderButton.classList.remove('fade-out');
+        }
+    }
+}
+
+
+    function removeFromCart(productId) {
+        fetch(`/remove_from_cart_ajax/${productId}`, {
+            method: "POST"
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const itemElement = document.querySelector(`.cart-item-card[data-id="${productId}"]`);
+                if (itemElement) {
+                    itemElement.classList.add("fade-out");
+                    setTimeout(() => {
+                        itemElement.remove();
+                        updateOrderButtonVisibility();
+
+                        // Если это был последний товар
+                        if (document.querySelectorAll('.cart-item-card').length === 0) {
+                            document.querySelector('.cart-container').innerHTML = `
+                                <p style="text-align: center; color: white;">Корзина пуста.</p>
+                                <div style="text-align: center; margin-top: 20px;">
+                                    <a href="{{ url_for('catalog') }}" class="catalog-link">Перейти в каталог товаров</a>
+                                </div>
+                            `;
+                        }
+                    }, 400);
+                }
+
+                document.querySelectorAll('.cart-count').forEach(el => el.textContent = data.cart_count);
+                showToast("Товар удалён из корзины");
+            }
+        });
+    }
+
+    function updateQuantity(productId, action) {
+        fetch(`/update_cart_quantity_ajax/${productId}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ action: action })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                if (data.new_quantity > 0) {
+                    document.getElementById(`quantity-${productId}`).textContent = data.new_quantity;
+                    showToast(action === 'increase' ? "Добавлен ещё один товар" : "Уменьшено количество товара");
+                } else {
+                    removeFromCart(productId);
+                }
+                document.querySelectorAll('.cart-count').forEach(el => el.textContent = data.cart_count);
+                updateOrderButtonVisibility();
+            }
+        });
+    }
+
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.classList.add('show');
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2500);
+    }
+
+    // Инициализация: скрыть кнопку, если корзина вдруг пустая на момент загрузки
+    document.addEventListener('DOMContentLoaded', updateOrderButtonVisibility);
+</script>
+
+<!-- Всплывающее уведомление -->
+<div id="toast" class="toast"></div>
+
+{% endblock %}

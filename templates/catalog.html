@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="product-container">
+        {% for product in products %}
+        <div class="product" data-product-id="{{ product.id }}">
+            <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
+
+            <div class="product-info">
+                <p class="product-name">{{ product.name }}</p>
+                <p class="description">{{ product.description }}</p>
+            </div>
+
+            <div class="product-action">
+                {% set quantity = cart.get(product.id|string, 0) %}
+                {% if quantity > 0 %}
+                <div class="quantity-controls">
+                    <button onclick="changeQuantity({{ product.id }}, -1)">-</button>
+                    <input type="number" min="1" value="{{ quantity }}" onchange="setQuantity({{ product.id }}, this.value)">
+                    <button onclick="changeQuantity({{ product.id }}, 1)">+</button>
+                </div>
+                {% else %}
+                <button class="add-btn" onclick="setQuantity({{ product.id }}, 1)">Добавить</button>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    function updateCart(productId, quantity) {
+        fetch(`/update_cart/${productId}`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({quantity: quantity})
+        }).then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                // Обновляем счетчик в шапке
+                document.querySelectorAll('.cart-count').forEach(el => el.textContent = data.cart_count);
+
+                // Получаем элемент карточки товара
+                const productCard = document.querySelector(`[data-product-id="${productId}"]`);
+                const actionContainer = productCard.querySelector('.product-action');
+
+                // Обновляем html в блоке .product-action
+                if (quantity > 0) {
+                    actionContainer.innerHTML = `
+                        <div class="quantity-controls">
+                            <button onclick="changeQuantity(${productId}, -1)">-</button>
+                            <input type="number" min="1" value="${quantity}" onchange="setQuantity(${productId}, this.value)">
+                            <button onclick="changeQuantity(${productId}, 1)">+</button>
+                        </div>
+                    `;
+                } else {
+                    actionContainer.innerHTML = `
+                        <button class="add-btn added-animation" onclick="setQuantity(${productId}, 1)">Добавить</button>
+                    `;
+                }
+
+                // Анимация иконки корзины
+                const icon = document.querySelector('.cart-icon');
+                if (icon) {
+                    icon.classList.add('cart-icon-pop');
+                    setTimeout(() => icon.classList.remove('cart-icon-pop'), 300);
+                }
+            }
+        });
+    }
+
+    function changeQuantity(productId, delta) {
+        const input = document.querySelector(`[data-product-id="${productId}"] input`);
+        let newVal = parseInt(input.value) + delta;
+        if (newVal < 1) newVal = 0;
+        updateCart(productId, newVal);
+    }
+
+    function setQuantity(productId, quantity) {
+        quantity = parseInt(quantity);
+        if (!isNaN(quantity) && quantity >= 1) {
+            updateCart(productId, quantity);
+        }
+    }
+</script>
+
+{% endblock %}

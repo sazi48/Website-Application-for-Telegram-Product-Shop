@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Спасибо за заказ!</h2>
+    <p class="mb-3">Ваш заказ принят. Мы свяжемся с вами в ближайшее время для уточнения деталей.</p>
+
+    <p><strong>Имя:</strong> {{ order.name }}</p>
+    <p><strong>Адрес:</strong> {{ order.address }}</p>
+    <p><strong>Телефон:</strong> {{ order.phone }}</p>
+
+    <h4 class="mt-4">Содержимое корзины:</h4>
+
+    <div class="order-items">
+        {% for item in cart_items %}
+        <div class="order-item">
+            <img src="/static/images/{{ item.image }}" alt="{{ item.name }}">
+            <div class="order-item-info">
+                <h5>{{ item.name }}</h5>
+                <p>Количество: {{ item.quantity }} шт.</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <p class="mt-4"><strong>Статус:</strong> {{ order.status }}</p>
+
+    <div class="mt-4">
+        <a href="/" class="catalog-link">Вернуться в каталог</a>
+    </div>
+</div>
+{% endblock %}

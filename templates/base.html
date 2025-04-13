@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог HeatMe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+    .toast {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #333;
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #000;
+        z-index: 9999;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .toast.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .cart-item-card.fade-out {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    </style>
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo">
+            <a href="{{ url_for('catalog') }}">HEATME</a>
+        </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    {% if request.endpoint not in ['cart', 'order_confirmation', 'order'] %}
+    <a class="cart-icon" href="{{ url_for('cart') }}">
+        🛒 <span class="cart-count">{{ cart_count }}</span>
+    </a>
+    {% endif %}
+
+</body>
+</html>
