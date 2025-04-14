@@ -89,6 +89,8 @@ p {
   font-family: 'benzin-semibold', sans-serif;
   font-size: 13px;
   margin-top: 4px;
+  word-wrap: break-word; /* добавлено */
+  text-align: center; /* чтобы выглядело ровно */
 }
 
 .description {
@@ -96,6 +98,8 @@ p {
   color: #999;
   margin: 4px 0;
   flex-grow: 1;
+  word-wrap: break-word; /* добавлено */
+  text-align: center; /* по желанию */
 }
 
 .product-action {
