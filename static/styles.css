@@ -439,3 +439,10 @@ p {
   display: flex;
   justify-content: center;
 }
+.product-name,
+.description {
+  word-break: normal;        /* не ломаем слова */
+  overflow-wrap: break-word; /* переносим только по границам слов */
+  hyphens: auto;              /* если нужно, добавляет тире для переноса (можно убрать) */
+}
+text-align: center;
