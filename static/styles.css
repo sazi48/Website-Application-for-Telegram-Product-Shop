@@ -65,6 +65,7 @@ p {
 }
 
 .product {
+  width: 30%;
   max-width: 150px;
   min-width: 100px;
   border: 1px solid #2e2e2e;
@@ -378,14 +379,34 @@ p {
   gap: 10px;
 }
 .product-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Всегда 3 товара в строке */
-  gap: 10px;
-  justify-items: center; /* Центрируем товары внутри ячеек */
-  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* расстояние между карточками */
 }
 
 .product {
-  width: 100%;
-  max-width: 160px; /* Можно подправить под твой вкус */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  padding: 10px;
+  width: 30%;
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+.product-info {
+  flex-grow: 1;
+}
+
+.product-action {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.add-btn {
+  margin-bottom: 0; /* убираем лишнее расстояние снизу */
 }
