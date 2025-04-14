@@ -44,7 +44,7 @@ p {
   z-index: 1000;
 }
 .logo {
-  font-family: 'benzin-semibold', cursive;
+  font-family: 'benzin-semibold', sans-serif;
   font-size: 24px;
   font-weight: 600;
   color: #00c853;
