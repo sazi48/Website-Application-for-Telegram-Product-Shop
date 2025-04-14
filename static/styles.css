@@ -410,3 +410,28 @@ p {
 .add-btn {
   margin-bottom: 0; /* убираем лишнее расстояние снизу */
 }
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* всегда 3 карточки */
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+}
+
+.product {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.product-action {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
