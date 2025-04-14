@@ -265,30 +265,40 @@ body {
 /* Адаптивность */
 @media (max-width: 768px) {
     .product {
-        width: 40%;
+        width: 30%; /* около 3-х в ряд на планшетах и телефонах с большим экраном */
     }
 }
 
 @media (max-width: 480px) {
     .product {
-        width: 90%;
+        width: 30%; /* 3 в ряд на маленьких телефонах */
+        max-width: 120px; /* чтобы не становились слишком широкими */
     }
 
     .product button {
-        font-size: 14px;
-        padding: 6px 12px;
+        font-size: 12px;
+        padding: 4px 8px;
     }
 
-    .quantity-controls input {
-        width: 30px;
+    .product-name {
         font-size: 12px;
     }
 
+    .description {
+        font-size: 11px;
+    }
+
+    .quantity-controls input {
+        width: 28px;
+        font-size: 11px;
+    }
+
     .quantity-controls button {
-        font-size: 14px;
-        padding: 4px 6px;
+        font-size: 12px;
+        padding: 3px 5px;
     }
 }
+
 /* === ДОБАВЛЕНИЕ КОМПАКТНОГО ОТОБРАЖЕНИЯ КОЛИЧЕСТВА В КАТАЛОГЕ === */
 .quantity-controls {
     display: flex;
