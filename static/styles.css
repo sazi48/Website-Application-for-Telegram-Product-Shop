@@ -355,24 +355,7 @@ p {
 }
 
 /* === АДАПТИВНОСТЬ === */
-@media (max-width: 480px) {
-  .product {
-    max-width: 100px;
-  }
 
-  .product-name,
-  .description,
-  .add-btn,
-  .product button {
-    font-size: 11px;
-  }
-
-  .quantity-controls input,
-  .quantity-controls button {
-    font-size: 10px;
-    padding: 3px;
-  }
-}
 .catalog-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
