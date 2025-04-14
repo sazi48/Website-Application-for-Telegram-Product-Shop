@@ -65,7 +65,6 @@ p {
 }
 
 .product {
-  width: 30%;
   max-width: 150px;
   min-width: 100px;
   border: 1px solid #2e2e2e;
@@ -377,4 +376,16 @@ p {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
+}
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Всегда 3 товара в строке */
+  gap: 10px;
+  justify-items: center; /* Центрируем товары внутри ячеек */
+  padding: 10px;
+}
+
+.product {
+  width: 100%;
+  max-width: 160px; /* Можно подправить под твой вкус */
 }
