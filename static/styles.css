@@ -298,6 +298,38 @@ body {
         padding: 3px 5px;
     }
 }
+@media screen and (max-width: 768px) {
+  .product {
+    width: 30%;
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .product img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+  }
+
+  .product-description {
+    font-size: 10px;
+    line-height: 1.2;
+  }
+
+  .product-name {
+    font-size: 13px;
+  }
+
+  .add-button {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .product-container {
+    gap: 10px;
+  }
+}
 
 /* === ДОБАВЛЕНИЕ КОМПАКТНОГО ОТОБРАЖЕНИЯ КОЛИЧЕСТВА В КАТАЛОГЕ === */
 .quantity-controls {
