@@ -12,8 +12,10 @@
     <div class="cart-container">
         {% for item in cart_items %}
         <div class="cart-item-card" data-id="{{ item.id }}">
-            <img src="/static/images/{{ item.image }}" alt="{{ item.name }}">
-            <div class="cart-item-name">{{ item.name }}</div>
+            <div class="cart-item-main">
+                <img src="/static/images/{{ item.image }}" alt="{{ item.name }}">
+                <div class="cart-item-name">{{ item.name }}</div>
+            </div>
             <div class="cart-item-quantity" id="quantity-{{ item.id }}">{{ item.quantity }}</div>
             <div class="cart-item-actions">
                 <button type="button" class="quantity-btn" onclick="updateQuantity({{ item.id }}, 'decrease')">−</button>
@@ -29,7 +31,6 @@
     </div>
 {% endif %}
 
-<!-- Стили -->
 <style>
     .cart-container {
         display: flex;
@@ -50,16 +51,21 @@
         transition: all 0.3s ease;
     }
 
+    .cart-item-main {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: 1;
+    }
+
     .cart-item-card img {
         width: 100px;
         height: 100px;
-        border-radius: 16px;
+        border-radius: 12px;
         object-fit: cover;
-        margin-right: 12px;
     }
 
     .cart-item-name {
-        flex-grow: 1;
         font-weight: bold;
         color: white;
         font-size: 16px;
@@ -121,31 +127,29 @@
         transition: opacity 0.4s ease-out;
     }
 
-    /* Адаптивность */
     @media (max-width: 480px) {
         .cart-item-card {
             flex-direction: column;
             align-items: flex-start;
         }
 
-        .cart-item-card img {
-            width: 90px;
-            height: 90px;
-            margin-bottom: 8px;
+        .cart-item-main {
+            flex-direction: row;
+            align-items: center;
         }
 
         .cart-item-actions {
             margin-top: 8px;
             justify-content: flex-start;
+            flex-wrap: wrap;
         }
 
         .cart-item-name {
-            margin-top: 6px;
+            margin-top: 0;
         }
     }
 </style>
 
-<!-- JS и тосты оставлены без изменений -->
 <script>
     function updateOrderButtonVisibility() {
         const orderButton = document.querySelector('.order-button');
@@ -224,6 +228,5 @@
     document.addEventListener('DOMContentLoaded', updateOrderButtonVisibility);
 </script>
 
-<!-- Всплывающее уведомление -->
 <div id="toast" class="toast"></div>
 {% endblock %}
