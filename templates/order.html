@@ -18,6 +18,9 @@
         </div>
         <button type="submit" class="confirm-btn">Подтвердить заказ</button>
     </form>
+
+    <!-- Отступ снизу для предотвращения перекрытия клавиатурой -->
+    <div style="height: 200px;"></div>
 </div>
 
 <style>
@@ -102,6 +105,22 @@
         .order-title {
             font-size: 22px;
         }
+
+        /* Безопасный отступ на мобилках */
+        .order-container {
+            padding-bottom: 200px;
+        }
     }
 </style>
+
+<script>
+    document.querySelectorAll('input, textarea').forEach(el => {
+        el.addEventListener('focus', () => {
+            setTimeout(() => {
+                el.scrollIntoView({behavior: 'smooth', block: 'center'});
+            }, 300);
+        });
+    });
+</script>
+
 {% endblock %}

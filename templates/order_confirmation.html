@@ -2,14 +2,16 @@
 
 {% block content %}
 <div class="container">
-    <h2 class="mb-4">Спасибо за заказ!</h2>
-    <p class="mb-3">Ваш заказ принят. Мы свяжемся с вами в ближайшее время для уточнения деталей.</p>
+    <h2 class="thank-you-title">Спасибо за заказ!</h2>
+    <p class="thank-you-text">Ваш заказ принят. Мы свяжемся с вами в ближайшее время для уточнения деталей.</p>
 
-    <p><strong>Имя:</strong> {{ order.name }}</p>
-    <p><strong>Адрес:</strong> {{ order.address }}</p>
-    <p><strong>Телефон:</strong> {{ order.phone }}</p>
+    <div class="order-details">
+        <p><strong>Имя:</strong> {{ order.name }}</p>
+        <p><strong>Адрес:</strong> {{ order.address }}</p>
+        <p><strong>Телефон:</strong> {{ order.phone }}</p>
+    </div>
 
-    <h4 class="mt-4">Содержимое корзины:</h4>
+    <h4 class="cart-header">Содержимое корзины:</h4>
 
     <div class="order-items">
         {% for item in cart_items %}
@@ -23,10 +25,123 @@
         {% endfor %}
     </div>
 
-    <p class="mt-4"><strong>Статус:</strong> {{ order.status }}</p>
+    <p class="order-status"><strong>Статус:</strong> {{ order.status }}</p>
 
     <div class="mt-4">
-        <a href="/" class="catalog-link">Вернуться в каталог</a>
+        <a href="/" class="catalog-link neon-link">Вернуться в каталог</a>
     </div>
 </div>
+
+<style>
+    .container {
+        padding: 24px;
+        background-color: #111;
+        border-radius: 16px;
+        box-shadow: 0 0 20px rgba(0, 255, 174, 0.05);
+        color: #eee;
+    }
+
+    .thank-you-title {
+        color: #00ffae;
+        font-size: 28px;
+        margin-bottom: 12px;
+        text-shadow: 0 0 6px rgba(0, 255, 174, 0.6);
+    }
+
+    .thank-you-text {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .order-details p,
+    .order-status {
+        font-size: 15px;
+        margin-bottom: 6px;
+    }
+
+    .cart-header {
+        margin-top: 24px;
+        color: #00ffae;
+        font-size: 20px;
+        margin-bottom: 16px;
+        text-shadow: 0 0 6px rgba(0, 255, 174, 0.4);
+    }
+
+    .order-items {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .order-item {
+        display: flex;
+        align-items: center;
+        background-color: #1a1a1a;
+        border-radius: 12px;
+        padding: 12px;
+        box-shadow: 0 0 10px rgba(0, 255, 174, 0.08);
+    }
+
+    .order-item img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-right: 16px;
+        box-shadow: 0 0 10px rgba(0, 255, 174, 0.3);
+    }
+
+    .order-item-info h5 {
+        margin: 0;
+        font-size: 16px;
+        color: #00ffae;
+    }
+
+    .order-item-info p {
+        margin: 4px 0 0;
+        font-size: 14px;
+    }
+
+    .catalog-link.neon-link {
+        display: inline-block;
+        margin-top: 20px;
+        background-color: #00c37e;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+        box-shadow: 0 0 12px rgba(0, 255, 174, 0.5);
+    }
+
+    .catalog-link.neon-link:hover {
+        background-color: #00a86b;
+        transform: scale(1.05);
+    }
+</style>
+<style>
+@font-face {
+    font-family: 'Benzin';
+    src: url("{{ url_for('static', filename='fonts/benzin-semibold.ttf') }}") format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Geologica';
+    src: url("{{ url_for('static', filename='fonts/Geologica.ttf') }}") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Geologica', sans-serif;
+}
+
+h1, h2, h3, h4, h5, .product-name, .thank-you-title {
+    font-family: 'Benzin', sans-serif;
+}
+</style>
+
 {% endblock %}
