@@ -14,8 +14,10 @@
         <div class="cart-item-card" data-id="{{ item.id }}">
             <img src="/static/images/{{ item.image }}" alt="{{ item.name }}" class="cart-item-image">
             <div class="cart-item-content">
-                <div class="cart-item-name">{{ item.name }}</div>
-                <div class="cart-item-quantity" id="quantity-{{ item.id }}">{{ item.quantity }}</div>
+                <div class="cart-item-header">
+                    <div class="cart-item-name">{{ item.name }}</div>
+                    <div class="cart-item-quantity" id="quantity-{{ item.id }}">{{ item.quantity }}</div>
+                </div>
                 <div class="cart-item-actions">
                     <button type="button" class="quantity-btn" onclick="updateQuantity({{ item.id }}, 'decrease')">−</button>
                     <button type="button" class="remove-btn" onclick="removeFromCart({{ item.id }})">Удалить</button>
@@ -33,6 +35,19 @@
 
 <!-- Стили -->
 <style>
+    body {
+        background-color: #121212;
+        color: white;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .cart-title {
+        text-align: center;
+        font-size: 28px;
+        color: #00ff66;
+        margin-bottom: 20px;
+    }
+
     .cart-container {
         display: flex;
         flex-direction: column;
@@ -42,67 +57,73 @@
 
     .cart-item-card {
         display: flex;
-        background-color: #1d1d1d;
-        border: 1.5px solid #00ff00;
-        border-radius: 12px;
-        padding: 12px;
+        background-color: #1e1e1e;
+        border: 2px solid #00ff66;
+        border-radius: 16px;
+        padding: 16px;
         align-items: center;
-        gap: 15px;
+        gap: 16px;
         transition: all 0.3s ease;
     }
 
     .cart-item-image {
-        width: 90px;
-        height: 90px;
+        width: 100px;
+        height: 100px;
         border-radius: 12px;
         object-fit: cover;
         flex-shrink: 0;
     }
 
     .cart-item-content {
+        flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        flex: 1;
+        justify-content: space-between;
+    }
+
+    .cart-item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
     }
 
     .cart-item-name {
         font-weight: bold;
+        font-size: 20px;
         color: white;
-        font-size: 18px;
-        margin-bottom: 6px;
     }
 
     .cart-item-quantity {
+        font-size: 18px;
         color: white;
-        font-size: 16px;
-        margin-bottom: 8px;
     }
 
     .cart-item-actions {
         display: flex;
-        gap: 6px;
+        gap: 10px;
+        flex-wrap: wrap;
     }
 
     .quantity-btn, .remove-btn {
-        background-color: #00ff00;
+        background-color: #00ff66;
         color: black;
-        border: none;
-        border-radius: 6px;
-        padding: 6px 12px;
         font-weight: bold;
+        font-size: 16px;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 8px;
         cursor: pointer;
-        font-size: 14px;
+        transition: 0.2s ease;
     }
 
     .quantity-btn:hover, .remove-btn:hover {
-        background-color: #00cc00;
+        background-color: #00cc55;
     }
 
     .order-button {
         background-color: #28a745;
         color: black;
-        font-family: 'activistka_wide', sans-serif;
         font-size: 18px;
         font-weight: bold;
         padding: 12px 28px;
@@ -116,13 +137,10 @@
     .order-button:hover {
         background-color: #45c156;
         transform: translateY(-2px);
-        text-decoration: none;
-        color: black;
     }
 
     .order-button:active {
         background-color: #1e7e34;
-        color: black;
     }
 
     .fade-out {
@@ -130,15 +148,16 @@
         transition: opacity 0.4s ease-out;
     }
 
-    /* Адаптивность */
     @media (max-width: 480px) {
         .cart-item-card {
             flex-direction: column;
             align-items: flex-start;
         }
 
-        .cart-item-content {
-            width: 100%;
+        .cart-item-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
         }
 
         .cart-item-actions {
