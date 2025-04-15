@@ -446,3 +446,61 @@ p {
   hyphens: auto;              /* если нужно, добавляет тире для переноса (можно убрать) */
 }
 text-align: center;
+.cart-item {
+    border: 2px solid #00ff00; /* зелёная рамка */
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #1c1c1c;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* чтобы не ломалось на узких экранах */
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-item-name {
+    font-size: 1rem;
+    color: #f0f0f0;
+    font-weight: bold;
+    margin: 0 10px;
+    flex: 1 1 auto;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: nowrap;
+}
+
+.cart-item button {
+    background-color: #00ff00;
+    color: #000;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+@media (max-width: 480px) {
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item-controls {
+        margin-top: 10px;
+        flex-wrap: wrap;
+    }
+
+    .cart-item-name {
+        font-size: 0.9rem;
+    }
+}
