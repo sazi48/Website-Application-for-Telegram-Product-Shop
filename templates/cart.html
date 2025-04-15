@@ -12,10 +12,8 @@
     <div class="cart-container">
         {% for item in cart_items %}
         <div class="cart-item-card" data-id="{{ item.id }}">
-            <div class="cart-item-main">
-                <img src="/static/images/{{ item.image }}" alt="{{ item.name }}">
-                <div class="cart-item-name">{{ item.name }}</div>
-            </div>
+            <img src="/static/images/{{ item.image }}" alt="{{ item.name }}">
+            <div class="cart-item-name">{{ item.name }}</div>
             <div class="cart-item-quantity" id="quantity-{{ item.id }}">{{ item.quantity }}</div>
             <div class="cart-item-actions">
                 <button type="button" class="quantity-btn" onclick="updateQuantity({{ item.id }}, 'decrease')">−</button>
@@ -31,15 +29,16 @@
     </div>
 {% endif %}
 
+<!-- Стили -->
 <style>
     .cart-container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 0 16px;
-}
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 0 16px;
+    }
 
-.cart-item-card {
+    .cart-item-card {
     background-color: #111;
     border: 2px solid #00ff00;
     border-radius: 18px;
@@ -48,117 +47,100 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    box-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
-}
-
-.cart-item-main {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex: 1;
-}
-
-.cart-item-card img {
-    width: 120px;
-    height: 120px;
-    border-radius: 20px;
-    object-fit: cover;
-    background-color: white;
-    padding: 6px;
-}
-
-.cart-item-name {
-    font-weight: bold;
-    color: white;
-    font-size: 18px;
-    text-align: left;
-    flex: 1;
-}
-
-.cart-item-quantity {
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0 12px;
-}
-
-.cart-item-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.quantity-btn, .remove-btn {
-    background-color: #00ff00;
-    color: black;
-    border: none;
-    border-radius: 10px;
-    padding: 8px 14px;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    min-width: 42px;
-}
-
-.quantity-btn:hover, .remove-btn:hover {
-    background-color: #00cc00;
-}
-
-.remove-btn {
-    padding: 8px 20px;
-}
-
-.order-button {
-    background-color: #00ff00;
-    color: black;
-    font-family: 'activistka_wide', sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 14px 32px;
-    border: none;
-    border-radius: 14px;
-    text-decoration: none;
-    box-shadow: 0 4px 10px rgba(0,255,0,0.3);
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.order-button:hover {
-    background-color: #00cc00;
-    transform: translateY(-2px);
-    color: black;
-}
-
-.order-button:active {
-    background-color: #009900;
-    color: black;
-}
-
-@media (max-width: 480px) {
-    .cart-item-card {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .cart-item-main {
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .cart-item-actions {
-        margin-top: 8px;
-        justify-content: flex-start;
-        flex-wrap: wrap;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
     }
 
     .cart-item-card img {
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
+        border-radius: 10px;
+        object-fit: cover;
+        margin-right: 12px;
     }
-}
 
+    .cart-item-name {
+        flex-grow: 1;
+        font-weight: bold;
+        color: white;
+        font-size: 16px;
+    }
+
+    .cart-item-quantity {
+        color: white;
+        margin: 0 10px;
+    }
+
+    .cart-item-actions {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .quantity-btn, .remove-btn {
+        background-color: lime;
+        border: none;
+        border-radius: 5px;
+        padding: 6px 10px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .quantity-btn:hover, .remove-btn:hover {
+        background-color: #00cc00;
+    }
+
+    .order-button {
+        background-color: #28a745;
+        color: black;
+        font-family: 'activistka_wide', sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 12px 28px;
+        border: none;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .order-button:hover {
+        background-color: #45c156;
+        transform: translateY(-2px);
+        text-decoration: none;
+        color: black;
+    }
+
+    .order-button:active {
+        background-color: #1e7e34;
+        color: black;
+    }
+
+    .fade-out {
+        opacity: 0;
+        transition: opacity 0.4s ease-out;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 480px) {
+        .cart-item-card {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .cart-item-actions {
+            margin-top: 8px;
+            justify-content: flex-start;
+        }
+
+        .cart-item-name {
+            margin-top: 6px;
+        }
+    }
 </style>
 
+<!-- JS (оставляем как есть) -->
 <script>
     function updateOrderButtonVisibility() {
         const orderButton = document.querySelector('.order-button');
@@ -237,5 +219,6 @@
     document.addEventListener('DOMContentLoaded', updateOrderButtonVisibility);
 </script>
 
+<!-- Всплывающее уведомление -->
 <div id="toast" class="toast"></div>
 {% endblock %}
