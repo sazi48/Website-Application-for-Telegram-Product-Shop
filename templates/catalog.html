@@ -16,9 +16,9 @@
                 {% set quantity = cart.get(product.id|string, 0) %}
                 {% if quantity > 0 %}
                 <div class="quantity-controls">
-                    <button onclick="changeQuantity({{ product.id }}, -1)">-</button>
+                    <button class="neon-btn" onclick="changeQuantity({{ product.id }}, -1)">-</button>
                     <input type="number" min="1" value="{{ quantity }}" onchange="setQuantity({{ product.id }}, this.value)">
-                    <button onclick="changeQuantity({{ product.id }}, 1)">+</button>
+                    <button class="neon-btn" onclick="changeQuantity({{ product.id }}, 1)">+</button>
                 </div>
                 {% else %}
                 <button class="add-btn" onclick="setQuantity({{ product.id }}, 1)">Добавить</button>
@@ -29,6 +29,54 @@
     </div>
 </div>
 
+<style>
+    .add-btn,
+    .neon-btn {
+        background-color: #00c37e;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+        box-shadow: 0 0 10px rgba(0, 195, 126, 0.6);
+    }
+
+    .add-btn:hover,
+    .neon-btn:hover {
+        background-color: #00a86b;
+        transform: scale(1.05);
+    }
+
+    .quantity-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .quantity-controls input {
+        width: 50px;
+        text-align: center;
+        border-radius: 6px;
+        padding: 6px;
+        font-size: 14px;
+        border: 1px solid #555;
+        background-color: #1e1e1e;
+        color: #fff;
+    }
+
+    .added-animation {
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.95); }
+        to { opacity: 1; transform: scale(1); }
+    }
+</style>
+
 <script>
     function updateCart(productId, quantity) {
         fetch(`/update_cart/${productId}`, {
@@ -38,20 +86,16 @@
         }).then(res => res.json())
         .then(data => {
             if (data.success) {
-                // Обновляем счетчик в шапке
                 document.querySelectorAll('.cart-count').forEach(el => el.textContent = data.cart_count);
-
-                // Получаем элемент карточки товара
                 const productCard = document.querySelector(`[data-product-id="${productId}"]`);
                 const actionContainer = productCard.querySelector('.product-action');
 
-                // Обновляем html в блоке .product-action
                 if (quantity > 0) {
                     actionContainer.innerHTML = `
                         <div class="quantity-controls">
-                            <button onclick="changeQuantity(${productId}, -1)">-</button>
+                            <button class="neon-btn" onclick="changeQuantity(${productId}, -1)">-</button>
                             <input type="number" min="1" value="${quantity}" onchange="setQuantity(${productId}, this.value)">
-                            <button onclick="changeQuantity(${productId}, 1)">+</button>
+                            <button class="neon-btn" onclick="changeQuantity(${productId}, 1)">+</button>
                         </div>
                     `;
                 } else {
@@ -60,7 +104,6 @@
                     `;
                 }
 
-                // Анимация иконки корзины
                 const icon = document.querySelector('.cart-icon');
                 if (icon) {
                     icon.classList.add('cart-icon-pop');
@@ -84,5 +127,4 @@
         }
     }
 </script>
-
 {% endblock %}

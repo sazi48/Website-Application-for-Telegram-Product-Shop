@@ -11,7 +11,7 @@
 {% else %}
     <div class="cart-container">
         {% for item in cart_items %}
-        <div class="cart-item-card neon-border" data-id="{{ item.id }}">
+        <div class="cart-item-card" data-id="{{ item.id }}">
             <img src="/static/images/{{ item.image }}" alt="{{ item.name }}">
             <div class="cart-item-name">{{ item.name }}</div>
             <div class="cart-item-quantity" id="quantity-{{ item.id }}">{{ item.quantity }}</div>
@@ -25,11 +25,10 @@
     </div>
 
     <div style="text-align: center; margin-top: 20px;">
-        <a href="{{ url_for('order') }}" class="order-button neon-button">Оформить заказ</a>
+        <a href="{{ url_for('order') }}" class="order-button">Оформить заказ</a>
     </div>
 {% endif %}
 
-<!-- Стили -->
 <style>
     .cart-container {
         display: flex;
@@ -39,19 +38,16 @@
     }
 
     .cart-item-card {
-        background-color: #1d1d1d;
-        border: 1.5px solid #00ff00;
+        background-color: #1a1a1a;
+        border: 1.5px solid #36ff75;
         border-radius: 10px;
         padding: 12px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
+        box-shadow: 0 0 4px #2ecc71, 0 0 8px #2ecc71;
         transition: all 0.3s ease;
-    }
-
-    .neon-border {
-        box-shadow: 0 0 10px #00ff80, 0 0 20px #00ff80;
     }
 
     .cart-item-card img {
@@ -98,40 +94,48 @@
     }
 
     .order-button {
-        background-color: black;
-        color: #00ff80;
+        background-color: #1e1e1e;
+        color: #36ff75;
         font-family: 'activistka_wide', sans-serif;
         font-size: 18px;
         font-weight: bold;
         padding: 12px 28px;
-        border: 2px solid #00ff80;
+        border: 1.5px solid #36ff75;
         border-radius: 10px;
         text-decoration: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 0 12px #00ff80;
-        animation: neonPulse 2.5s infinite;
-        display: inline-block;
+        box-shadow: 0 0 5px #2ecc71, 0 0 10px #2ecc71;
+        transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
     .order-button:hover {
-        background-color: #00ff80;
-        color: black;
-        box-shadow: 0 0 20px #00ff80, 0 0 30px #00ff80;
+        background-color: #2a2a2a;
         transform: translateY(-2px);
+        color: #36ff75;
     }
 
     .order-button:active {
-        transform: scale(0.96);
-        box-shadow: 0 0 6px #00ff80;
+        background-color: #161616;
+        color: #36ff75;
     }
 
-    @keyframes neonPulse {
-        0%, 100% {
-            box-shadow: 0 0 12px #00ff80, 0 0 24px #00ff80;
-        }
-        50% {
-            box-shadow: 0 0 24px #00ff80, 0 0 48px #00ff80;
-        }
+    .catalog-link {
+        display: inline-block;
+        background-color: #1e1e1e;
+        color: #36ff75;
+        padding: 10px 20px;
+        border: 1.5px solid #36ff75;
+        border-radius: 10px;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 16px;
+        box-shadow: 0 0 5px #2ecc71, 0 0 10px #2ecc71;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .catalog-link:hover {
+        background-color: #2a2a2a;
+        transform: translateY(-2px);
+        color: #36ff75;
     }
 
     .fade-out {
@@ -154,9 +158,35 @@
             margin-top: 6px;
         }
     }
+
+    .toast {
+        visibility: hidden;
+        min-width: 260px;
+        margin-left: -130px;
+        background-color: #121212;
+        color: #4eff8f;
+        text-align: center;
+        border-radius: 12px;
+        padding: 14px 24px;
+        position: fixed;
+        z-index: 9999;
+        left: 50%;
+        bottom: 40px;
+        font-size: 16px;
+        border: 2px solid #4eff8f;
+        box-shadow: 0 0 6px #3aff7a, 0 0 12px #3aff7a;
+        font-weight: bold;
+        opacity: 0;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .toast.show {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(-10px);
+    }
 </style>
 
-<!-- JS -->
 <script>
     function updateOrderButtonVisibility() {
         const orderButton = document.querySelector('.order-button');
