@@ -27,8 +27,8 @@
         background-color: #1d1d1d;
         padding: 30px 20px;
         border-radius: 12px;
-        border: 1.5px solid #00ff00;
-        box-shadow: 0 4px 12px rgba(0, 255, 0, 0.1);
+        border: 1.5px solid #00ff88;
+        box-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
     }
 
     .order-title {
@@ -53,16 +53,18 @@
 
     .checkout-form input {
         padding: 10px 12px;
-        border: 1px solid #00ff00;
+        border: 2px solid #00ff88;
         border-radius: 8px;
         background-color: #121212;
         color: white;
         font-size: 16px;
-        transition: border-color 0.3s ease;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 0 8px rgba(0, 255, 136, 0.2);
     }
 
     .checkout-form input:focus {
-        border-color: #00cc00;
+        border-color: #00cc66;
+        box-shadow: 0 0 12px rgba(0, 255, 136, 0.6);
         outline: none;
     }
 
@@ -71,22 +73,25 @@
         padding: 12px;
         font-size: 18px;
         font-weight: bold;
-        background-color: #28a745;
-        color: black;
+        background-color: #00c37e;
+        color: #fff;
         border: none;
         border-radius: 10px;
         cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        font-family: 'activistka_wide', sans-serif;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        font-family: 'Inter', sans-serif;
+        box-shadow: 0 0 12px rgba(0, 255, 136, 0.4);
     }
 
     .confirm-btn:hover {
-        background-color: #45c156;
-        transform: translateY(-2px);
+        background-color: #00a86b;
+        transform: scale(1.03);
+        box-shadow: 0 0 16px rgba(0, 255, 136, 0.6);
     }
 
     .confirm-btn:active {
-        background-color: #1e7e34;
+        background-color: #008f5a;
+        transform: scale(0.98);
     }
 
     @media (max-width: 480px) {

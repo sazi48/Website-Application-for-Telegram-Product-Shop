@@ -4,7 +4,8 @@
 <div class="container">
     <div class="product-container">
         {% for product in products %}
-        <div class="product" data-product-id="{{ product.id }}">
+        {% set quantity = cart.get(product.id|string, 0) %}
+        <div class="product{% if quantity > 0 %} selected{% endif %}" data-product-id="{{ product.id }}">
             <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
 
             <div class="product-info">
@@ -13,7 +14,6 @@
             </div>
 
             <div class="product-action">
-                {% set quantity = cart.get(product.id|string, 0) %}
                 {% if quantity > 0 %}
                 <div class="quantity-controls">
                     <button class="neon-btn" onclick="changeQuantity({{ product.id }}, -1)">-</button>
@@ -34,12 +34,18 @@
         background-color: #111;
         padding: 16px;
         border-radius: 12px;
-        transition: box-shadow 0.3s ease, transform 0.3s ease;
+        transition: box-shadow 0.3s ease, transform 0.3s ease, border 0.3s ease, background-color 0.3s ease;
     }
 
     .product:hover {
         box-shadow: 0 0 20px rgba(0, 255, 174, 0.5);
         transform: translateY(-4px) scale(1.02);
+    }
+
+    .product.selected {
+        border: 2px solid #00ffae;
+        box-shadow: 0 0 15px rgba(0, 255, 174, 0.6);
+        background-color: #151515;
     }
 
     .add-btn,
@@ -110,14 +116,21 @@
                 const actionContainer = productCard.querySelector('.product-action');
 
                 if (quantity > 0) {
-                    actionContainer.innerHTML = `
-                        <div class="quantity-controls">
-                            <button class="neon-btn" onclick="changeQuantity(${productId}, -1)">-</button>
-                            <input type="number" min="1" value="${quantity}" onchange="setQuantity(${productId}, this.value)">
-                            <button class="neon-btn" onclick="changeQuantity(${productId}, 1)">+</button>
-                        </div>
-                    `;
+                    productCard.classList.add('selected');
+                    const input = productCard.querySelector('input');
+                    if (input) {
+                        input.value = quantity;
+                    } else {
+                        actionContainer.innerHTML = `
+                            <div class="quantity-controls">
+                                <button class="neon-btn" onclick="changeQuantity(${productId}, -1)">-</button>
+                                <input type="number" min="1" value="${quantity}" onchange="setQuantity(${productId}, this.value)">
+                                <button class="neon-btn" onclick="changeQuantity(${productId}, 1)">+</button>
+                            </div>
+                        `;
+                    }
                 } else {
+                    productCard.classList.remove('selected');
                     actionContainer.innerHTML = `
                         <button class="add-btn added-animation" onclick="setQuantity(${productId}, 1)">Добавить</button>
                     `;
