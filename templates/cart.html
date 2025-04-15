@@ -24,18 +24,76 @@
         {% endfor %}
     </div>
 
-    <!-- Кнопка оформления заказа -->
     <div style="text-align: center; margin-top: 20px;">
         <a href="{{ url_for('order') }}" class="order-button">Оформить заказ</a>
     </div>
-
 {% endif %}
 
+<!-- Стили -->
 <style>
+    .cart-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 0 16px;
+    }
+
+    .cart-item-card {
+        background-color: #1d1d1d;
+        border: 1.5px solid #00ff00;
+        border-radius: 10px;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        transition: all 0.3s ease;
+    }
+
+    .cart-item-card img {
+        width: 60px;
+        height: 60px;
+        border-radius: 10px;
+        object-fit: cover;
+        margin-right: 12px;
+    }
+
+    .cart-item-name {
+        flex-grow: 1;
+        font-weight: bold;
+        color: white;
+        font-size: 16px;
+    }
+
+    .cart-item-quantity {
+        color: white;
+        margin: 0 10px;
+    }
+
+    .cart-item-actions {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .quantity-btn, .remove-btn {
+        background-color: lime;
+        border: none;
+        border-radius: 5px;
+        padding: 6px 10px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .quantity-btn:hover, .remove-btn:hover {
+        background-color: #00cc00;
+    }
+
     .order-button {
         background-color: #28a745;
         color: black;
-        font-family: 'activistka_wide', sans-serif; /* Шрифт как в шапке */
+        font-family: 'activistka_wide', sans-serif;
         font-size: 18px;
         font-weight: bold;
         padding: 12px 28px;
@@ -57,24 +115,44 @@
         background-color: #1e7e34;
         color: black;
     }
-</style>
 
-<!-- JS -->
+    .fade-out {
+        opacity: 0;
+        transition: opacity 0.4s ease-out;
+    }
 
-<script>
-    function updateOrderButtonVisibility() {
-    const orderButton = document.querySelector('.order-button');
-    const items = document.querySelectorAll('.cart-item-card');
-    if (orderButton) {
-        if (items.length === 0) {
-            orderButton.classList.add('fade-out');
-            setTimeout(() => orderButton.remove(), 500); // удалим после плавного исчезновения
-        } else {
-            orderButton.classList.remove('fade-out');
+    /* Адаптивность */
+    @media (max-width: 480px) {
+        .cart-item-card {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .cart-item-actions {
+            margin-top: 8px;
+            justify-content: flex-start;
+        }
+
+        .cart-item-name {
+            margin-top: 6px;
         }
     }
-}
+</style>
 
+<!-- JS (оставляем как есть) -->
+<script>
+    function updateOrderButtonVisibility() {
+        const orderButton = document.querySelector('.order-button');
+        const items = document.querySelectorAll('.cart-item-card');
+        if (orderButton) {
+            if (items.length === 0) {
+                orderButton.classList.add('fade-out');
+                setTimeout(() => orderButton.remove(), 500);
+            } else {
+                orderButton.classList.remove('fade-out');
+            }
+        }
+    }
 
     function removeFromCart(productId) {
         fetch(`/remove_from_cart_ajax/${productId}`, {
@@ -89,8 +167,6 @@
                     setTimeout(() => {
                         itemElement.remove();
                         updateOrderButtonVisibility();
-
-                        // Если это был последний товар
                         if (document.querySelectorAll('.cart-item-card').length === 0) {
                             document.querySelector('.cart-container').innerHTML = `
                                 <p style="text-align: center; color: white;">Корзина пуста.</p>
@@ -101,7 +177,6 @@
                         }
                     }, 400);
                 }
-
                 document.querySelectorAll('.cart-count').forEach(el => el.textContent = data.cart_count);
                 showToast("Товар удалён из корзины");
             }
@@ -135,17 +210,14 @@
         const toast = document.getElementById('toast');
         toast.textContent = message;
         toast.classList.add('show');
-
         setTimeout(() => {
             toast.classList.remove('show');
         }, 2500);
     }
 
-    // Инициализация: скрыть кнопку, если корзина вдруг пустая на момент загрузки
     document.addEventListener('DOMContentLoaded', updateOrderButtonVisibility);
 </script>
 
 <!-- Всплывающее уведомление -->
 <div id="toast" class="toast"></div>
-
 {% endblock %}
