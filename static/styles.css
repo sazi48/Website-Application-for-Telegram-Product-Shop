@@ -183,10 +183,19 @@ p {
 }
 
 .cart-item-card img {
-  width: 60px;
-  height: 60px;
+  width: 120px;
+  height: auto;
+  max-width: 30vw;
+  border-radius: 16px;
   object-fit: cover;
-  border-radius: 8px;
+}
+
+@media (max-width: 480px) {
+  .cart-item-card img {
+    width: 100px;
+    height: auto;
+    border-radius: 14px;
+  }
 }
 
 .cart-item-name {
