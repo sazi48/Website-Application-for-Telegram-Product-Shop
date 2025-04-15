@@ -1,22 +1,102 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-    <h2 class="mb-4">Оформление заказа</h2>
+<div class="order-container">
+    <h2 class="order-title">Оформление заказа</h2>
     <form method="POST" action="{{ url_for('order') }}" class="checkout-form">
-        <div class="form-group mb-3">
+        <div class="form-group">
             <label for="name">Имя</label>
             <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group">
             <label for="address">Адрес доставки</label>
             <input type="text" id="address" name="address" required placeholder="Город, улица, дом...">
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group">
             <label for="phone">Телефон</label>
             <input type="tel" id="phone" name="phone" required placeholder="+7 (___) ___-__-__">
         </div>
-        <button type="submit" class="add-btn">Подтвердить заказ</button>
+        <button type="submit" class="confirm-btn">Подтвердить заказ</button>
     </form>
 </div>
+
+<style>
+    .order-container {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #1d1d1d;
+        padding: 30px 20px;
+        border-radius: 12px;
+        border: 1.5px solid #00ff00;
+        box-shadow: 0 4px 12px rgba(0, 255, 0, 0.1);
+    }
+
+    .order-title {
+        text-align: center;
+        color: white;
+        margin-bottom: 24px;
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    .checkout-form .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .checkout-form label {
+        color: #ccc;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    .checkout-form input {
+        padding: 10px 12px;
+        border: 1px solid #00ff00;
+        border-radius: 8px;
+        background-color: #121212;
+        color: white;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+    .checkout-form input:focus {
+        border-color: #00cc00;
+        outline: none;
+    }
+
+    .confirm-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 18px;
+        font-weight: bold;
+        background-color: #28a745;
+        color: black;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-family: 'activistka_wide', sans-serif;
+    }
+
+    .confirm-btn:hover {
+        background-color: #45c156;
+        transform: translateY(-2px);
+    }
+
+    .confirm-btn:active {
+        background-color: #1e7e34;
+    }
+
+    @media (max-width: 480px) {
+        .order-container {
+            padding: 20px 16px;
+        }
+
+        .order-title {
+            font-size: 22px;
+        }
+    }
+</style>
 {% endblock %}
