@@ -12,13 +12,15 @@
     <div class="cart-container">
         {% for item in cart_items %}
         <div class="cart-item-card" data-id="{{ item.id }}">
-            <img src="/static/images/{{ item.image }}" alt="{{ item.name }}">
-            <div class="cart-item-name">{{ item.name }}</div>
-            <div class="cart-item-quantity" id="quantity-{{ item.id }}">{{ item.quantity }}</div>
-            <div class="cart-item-actions">
-                <button type="button" class="quantity-btn" onclick="updateQuantity({{ item.id }}, 'decrease')">−</button>
-                <button type="button" class="remove-btn" onclick="removeFromCart({{ item.id }})">Удалить</button>
-                <button type="button" class="quantity-btn" onclick="updateQuantity({{ item.id }}, 'increase')">+</button>
+            <img src="/static/images/{{ item.image }}" alt="{{ item.name }}" class="cart-item-image">
+            <div class="cart-item-content">
+                <div class="cart-item-name">{{ item.name }}</div>
+                <div class="cart-item-quantity" id="quantity-{{ item.id }}">{{ item.quantity }}</div>
+                <div class="cart-item-actions">
+                    <button type="button" class="quantity-btn" onclick="updateQuantity({{ item.id }}, 'decrease')">−</button>
+                    <button type="button" class="remove-btn" onclick="removeFromCart({{ item.id }})">Удалить</button>
+                    <button type="button" class="quantity-btn" onclick="updateQuantity({{ item.id }}, 'increase')">+</button>
+                </div>
             </div>
         </div>
         {% endfor %}
@@ -39,51 +41,58 @@
     }
 
     .cart-item-card {
+        display: flex;
         background-color: #1d1d1d;
         border: 1.5px solid #00ff00;
-        border-radius: 10px;
+        border-radius: 12px;
         padding: 12px;
-        display: flex;
         align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
+        gap: 15px;
         transition: all 0.3s ease;
     }
 
-    .cart-item-card img {
-        width: 60px;
-        height: 60px;
-        border-radius: 10px;
+    .cart-item-image {
+        width: 90px;
+        height: 90px;
+        border-radius: 12px;
         object-fit: cover;
-        margin-right: 12px;
+        flex-shrink: 0;
+    }
+
+    .cart-item-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
     }
 
     .cart-item-name {
-        flex-grow: 1;
         font-weight: bold;
         color: white;
-        font-size: 16px;
+        font-size: 18px;
+        margin-bottom: 6px;
     }
 
     .cart-item-quantity {
         color: white;
-        margin: 0 10px;
+        font-size: 16px;
+        margin-bottom: 8px;
     }
 
     .cart-item-actions {
         display: flex;
-        align-items: center;
         gap: 6px;
     }
 
     .quantity-btn, .remove-btn {
-        background-color: lime;
+        background-color: #00ff00;
+        color: black;
         border: none;
-        border-radius: 5px;
-        padding: 6px 10px;
+        border-radius: 6px;
+        padding: 6px 12px;
         font-weight: bold;
         cursor: pointer;
-        transition: background-color 0.2s ease;
+        font-size: 14px;
     }
 
     .quantity-btn:hover, .remove-btn:hover {
@@ -128,18 +137,18 @@
             align-items: flex-start;
         }
 
-        .cart-item-actions {
-            margin-top: 8px;
-            justify-content: flex-start;
+        .cart-item-content {
+            width: 100%;
         }
 
-        .cart-item-name {
-            margin-top: 6px;
+        .cart-item-actions {
+            margin-top: 10px;
+            flex-wrap: wrap;
         }
     }
 </style>
 
-<!-- JS (оставляем как есть) -->
+<!-- JS -->
 <script>
     function updateOrderButtonVisibility() {
         const orderButton = document.querySelector('.order-button');
