@@ -39,16 +39,15 @@
     }
 
     .cart-item-card {
-    background-color: #111;
-    border: 2px solid #00ff00;
-    border-radius: 18px;
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+        background-color: #1d1d1d;
+        border: 1.5px solid #00ff00;
+        border-radius: 10px;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        transition: all 0.3s ease;
     }
 
     .cart-item-card img {
@@ -77,44 +76,42 @@
         gap: 6px;
     }
 
-    .quantity-btn, .remove-btn {
-        background-color: lime;
-        border: none;
-        border-radius: 5px;
-        padding: 6px 10px;
+    .quantity-btn, .remove-btn, .order-button, .catalog-link {
+        background-color: black;
+        color: #00ff80;
+        border: 2px solid #00ff80;
         font-weight: bold;
+        font-size: 16px;
+        border-radius: 8px;
+        padding: 8px 14px;
         cursor: pointer;
-        transition: background-color 0.2s ease;
-    }
-
-    .quantity-btn:hover, .remove-btn:hover {
-        background-color: #00cc00;
-    }
-
-    .order-button {
-        background-color: #28a745;
-        color: black;
+        box-shadow: 0 0 8px #00ff80, 0 0 16px #00ff80;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
         font-family: 'activistka_wide', sans-serif;
-        font-size: 18px;
-        font-weight: bold;
-        padding: 12px 28px;
-        border: none;
-        border-radius: 10px;
-        text-decoration: none;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        animation: neonPulse 2.5s infinite;
     }
 
-    .order-button:hover {
-        background-color: #45c156;
+    .quantity-btn:hover, .remove-btn:hover, .order-button:hover, .catalog-link:hover {
+        background-color: #00ff80;
+        color: black;
+        box-shadow: 0 0 12px #00ff80, 0 0 24px #00ff80;
         transform: translateY(-2px);
-        text-decoration: none;
-        color: black;
     }
 
-    .order-button:active {
-        background-color: #1e7e34;
-        color: black;
+    .quantity-btn:active, .remove-btn:active, .order-button:active, .catalog-link:active {
+        transform: scale(0.96);
+        box-shadow: 0 0 6px #00ff80;
+    }
+
+    @keyframes neonPulse {
+        0%, 100% {
+            box-shadow: 0 0 8px #00ff80, 0 0 16px #00ff80;
+        }
+        50% {
+            box-shadow: 0 0 16px #00ff80, 0 0 32px #00ff80;
+        }
     }
 
     .fade-out {
@@ -122,7 +119,6 @@
         transition: opacity 0.4s ease-out;
     }
 
-    /* Адаптивность */
     @media (max-width: 480px) {
         .cart-item-card {
             flex-direction: column;
@@ -140,7 +136,7 @@
     }
 </style>
 
-<!-- JS (оставляем как есть) -->
+<!-- JS -->
 <script>
     function updateOrderButtonVisibility() {
         const orderButton = document.querySelector('.order-button');
