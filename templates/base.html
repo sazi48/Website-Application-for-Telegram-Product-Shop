@@ -26,13 +26,55 @@
         transform: translateY(0);
     }
 
+    .cart-item-card {
+        background-color: #111;
+        padding: 16px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .cart-item-card:hover {
+        box-shadow: 0 0 20px rgba(0, 255, 174, 0.5);
+        transform: translateY(-4px) scale(1.02);
+    }
+
     .cart-item-card.fade-out {
         opacity: 0;
         transform: translateX(50px);
         transition: opacity 0.4s ease, transform 0.4s ease;
     }
-    </style>
 
+    .cart-icon {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #00c37e;
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 16px;
+        box-shadow: 0 0 12px rgba(0, 195, 126, 0.6);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .cart-icon:hover {
+        background-color: #00a86b;
+        transform: scale(1.08);
+    }
+
+    .cart-icon-pop {
+        animation: cart-pop 0.3s ease;
+    }
+
+    @keyframes cart-pop {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+    </style>
 </head>
 <body>
     <header class="site-header">
@@ -48,6 +90,5 @@
         🛒 <span class="cart-count">{{ cart_count }}</span>
     </a>
     {% endif %}
-
 </body>
 </html>

@@ -30,6 +30,18 @@
 </div>
 
 <style>
+    .product {
+        background-color: #111;
+        padding: 16px;
+        border-radius: 12px;
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .product:hover {
+        box-shadow: 0 0 20px rgba(0, 255, 174, 0.5);
+        transform: translateY(-4px) scale(1.02);
+    }
+
     .add-btn,
     .neon-btn {
         background-color: #00c37e;
@@ -62,9 +74,16 @@
         border-radius: 6px;
         padding: 6px;
         font-size: 14px;
-        border: 1px solid #555;
+        border: 1px solid #00c37e;
         background-color: #1e1e1e;
-        color: #fff;
+        color: #00ffae;
+        box-shadow: 0 0 8px rgba(0, 195, 126, 0.4);
+        transition: box-shadow 0.2s ease;
+    }
+
+    .quantity-controls input:focus {
+        outline: none;
+        box-shadow: 0 0 12px rgba(0, 255, 174, 0.8);
     }
 
     .added-animation {
