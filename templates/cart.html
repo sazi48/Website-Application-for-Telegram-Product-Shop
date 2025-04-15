@@ -11,7 +11,7 @@
 {% else %}
     <div class="cart-container">
         {% for item in cart_items %}
-        <div class="cart-item-card" data-id="{{ item.id }}">
+        <div class="cart-item-card neon-border" data-id="{{ item.id }}">
             <img src="/static/images/{{ item.image }}" alt="{{ item.name }}">
             <div class="cart-item-name">{{ item.name }}</div>
             <div class="cart-item-quantity" id="quantity-{{ item.id }}">{{ item.quantity }}</div>
@@ -25,7 +25,7 @@
     </div>
 
     <div style="text-align: center; margin-top: 20px;">
-        <a href="{{ url_for('order') }}" class="order-button">Оформить заказ</a>
+        <a href="{{ url_for('order') }}" class="order-button neon-button">Оформить заказ</a>
     </div>
 {% endif %}
 
@@ -48,6 +48,10 @@
         justify-content: space-between;
         flex-wrap: wrap;
         transition: all 0.3s ease;
+    }
+
+    .neon-border {
+        box-shadow: 0 0 10px #00ff80, 0 0 20px #00ff80;
     }
 
     .cart-item-card img {
@@ -76,41 +80,57 @@
         gap: 6px;
     }
 
-    .quantity-btn, .remove-btn, .order-button, .catalog-link {
-        background-color: black;
-        color: #00ff80;
-        border: 2px solid #00ff80;
+    .quantity-btn, .remove-btn {
+        background-color: #2e2e2e;
+        color: white;
+        border: 1px solid #555;
         font-weight: bold;
         font-size: 16px;
-        border-radius: 8px;
-        padding: 8px 14px;
+        border-radius: 6px;
+        padding: 6px 10px;
         cursor: pointer;
-        box-shadow: 0 0 8px #00ff80, 0 0 16px #00ff80;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        display: inline-block;
-        font-family: 'activistka_wide', sans-serif;
-        animation: neonPulse 2.5s infinite;
+        transition: background-color 0.2s ease, transform 0.2s ease;
     }
 
-    .quantity-btn:hover, .remove-btn:hover, .order-button:hover, .catalog-link:hover {
+    .quantity-btn:hover, .remove-btn:hover {
+        background-color: #444;
+        transform: translateY(-1px);
+    }
+
+    .order-button {
+        background-color: black;
+        color: #00ff80;
+        font-family: 'activistka_wide', sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 12px 28px;
+        border: 2px solid #00ff80;
+        border-radius: 10px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 12px #00ff80;
+        animation: neonPulse 2.5s infinite;
+        display: inline-block;
+    }
+
+    .order-button:hover {
         background-color: #00ff80;
         color: black;
-        box-shadow: 0 0 12px #00ff80, 0 0 24px #00ff80;
+        box-shadow: 0 0 20px #00ff80, 0 0 30px #00ff80;
         transform: translateY(-2px);
     }
 
-    .quantity-btn:active, .remove-btn:active, .order-button:active, .catalog-link:active {
+    .order-button:active {
         transform: scale(0.96);
         box-shadow: 0 0 6px #00ff80;
     }
 
     @keyframes neonPulse {
         0%, 100% {
-            box-shadow: 0 0 8px #00ff80, 0 0 16px #00ff80;
+            box-shadow: 0 0 12px #00ff80, 0 0 24px #00ff80;
         }
         50% {
-            box-shadow: 0 0 16px #00ff80, 0 0 32px #00ff80;
+            box-shadow: 0 0 24px #00ff80, 0 0 48px #00ff80;
         }
     }
 
