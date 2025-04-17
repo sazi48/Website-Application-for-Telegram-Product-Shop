@@ -3,11 +3,11 @@ from flask_session import Session
 from urllib.parse import quote
 import requests  # в начале файла
 
-TELEGRAM_BOT_TOKEN = '7720822781:AAHtM7zAmDP7qT8brxlMkoH3q7VAw7hm7qc'
+TELEGRAM_BOT_TOKEN = '7675538685:AAH1qWdJ7zrTsTeMsftmbZsH7uX72w6c_L0'
 TELEGRAM_CHAT_ID = '-1002506317243'  # либо твой user_id, либо ID канала
 
 def send_telegram_message(message):
-    bot_token = '7720822781:AAHtM7zAmDP7qT8brxlMkoH3q7VAw7hm7qc'  # твой токен
+    bot_token = '7675538685:AAH1qWdJ7zrTsTeMsftmbZsH7uX72w6c_L0'  # твой токен
     chat_id = '-1002506317243'  # или ID, если пишешь себе
     url = f'https://api.telegram.org/bot{bot_token}/sendMessage'
     payload = {
