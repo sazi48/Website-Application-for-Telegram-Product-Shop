@@ -2,10 +2,12 @@
 
 {% block content %}
 <div class="container">
+    <input type="text" id="search-input" placeholder="Поиск товаров..." class="search-bar">
+
     <div class="product-container">
         {% for product in products %}
         {% set quantity = cart.get(product.id|string, 0) %}
-        <div class="product{% if quantity > 0 %} selected{% endif %}" data-product-id="{{ product.id }}">
+        <div class="product{% if quantity > 0 %} selected{% endif %}" data-product-id="{{ product.id }}" data-name="{{ product.name | lower }}">
             <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
 
             <div class="product-info">
@@ -30,13 +32,39 @@
 </div>
 
 <style>
+    .search-bar {
+        display: block;
+        max-width: 600px;
+        width: 100%;
+        padding: 12px 16px;
+        margin: 0 auto 24px;
+        font-size: 16px;
+        border-radius: 12px;
+        border: 1px solid #00c37e;
+        background-color: #1e1e1e;
+        color: #00ffae;
+        box-shadow: 0 0 10px rgba(0, 195, 126, 0.3);
+        transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    .search-bar:focus {
+        outline: none;
+        box-shadow: 0 0 15px rgba(0, 255, 174, 0.6);
+        transform: scale(1.01);
+    }
+
     .product {
         background-color: #111;
         padding: 16px;
         border-radius: 12px;
         transition: box-shadow 0.3s ease, transform 0.3s ease, border 0.3s ease, background-color 0.3s ease;
     }
-
+    @media (max-width: 600px) {
+        .search-bar {
+            font-size: 15px;
+            padding: 10px 14px;
+        }
+    }
     .product:hover {
         box-shadow: 0 0 20px rgba(0, 255, 174, 0.5);
         transform: translateY(-4px) scale(1.02);
@@ -103,6 +131,14 @@
 </style>
 
 <script>
+    document.getElementById('search-input').addEventListener('input', function () {
+        const value = this.value.toLowerCase();
+        document.querySelectorAll('.product').forEach(card => {
+            const name = card.getAttribute('data-name');
+            card.style.display = name.includes(value) ? '' : 'none';
+        });
+    });
+
     function updateCart(productId, quantity) {
         fetch(`/update_cart/${productId}`, {
             method: 'POST',
