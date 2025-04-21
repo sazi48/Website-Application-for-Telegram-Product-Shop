@@ -48,7 +48,8 @@
     .search-bar {
         display: block;
         width: 100%;
-        padding: 12px 16px 12px 36px; /* Место для иконки */
+        padding: 12px 16px;
+        padding-left: 40px; /* Отступ слева для иконки */
         font-size: 16px;
         border-radius: 12px;
         border: 1px solid #00c37e;
@@ -56,6 +57,7 @@
         color: #00ffae;
         box-shadow: 0 0 10px rgba(0, 195, 126, 0.3);
         transition: box-shadow 0.3s ease, transform 0.2s ease;
+        box-sizing: border-box;
     }
 
     .search-bar:focus {
@@ -74,20 +76,28 @@
         transition: transform 0.3s ease;
     }
 
+    .search-icon {
+        position: absolute;
+        left: 12px; /* Расположение иконки по левому краю */
+        top: 50%;
+        transform: translateY(-50%); /* Центрирование по вертикали */
+        color: #00c37e;
+    }
     .search-bar:focus + .search-icon {
         transform: translateY(-50%) scale(1.2);
     }
 
     @media (max-width: 600px) {
         .search-bar {
-            font-size: 15px;
-            padding: 10px 14px 10px 30px; /* Уменьшаем padding на мобильных устройствах */
+            font-size: 14px;
+            padding: 10px 14px; /* Уменьшаем padding на мобильных устройствах */
         }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 480px) {
         .search-bar {
-            padding: 8px 12px 8px 24px; /* Еще больше уменьшаем padding на маленьких устройствах */
+            font-size: 13px;
+            padding: 8px 12px; /* Еще больше уменьшаем padding на маленьких устройствах */
         }
     }
 
