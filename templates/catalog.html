@@ -244,4 +244,14 @@
         }
     }
 </script>
+<script>
+    document.addEventListener('click', function(event) {
+        const container = document.querySelector('.search-container');
+        const input = document.querySelector('.search-input');
+
+        if (container && !container.contains(event.target)) {
+            input.blur();
+        }
+    });
+</script>
 {% endblock %}
