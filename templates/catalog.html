@@ -3,8 +3,8 @@
 {% block content %}
 <div class="container">
     <div class="search-container">
-        <i class="search-icon fas fa-search"></i> <!-- Иконка теперь ПЕРЕД input -->
         <input type="text" id="search-input" placeholder="Поиск товаров..." class="search-bar">
+        <i class="search-icon fas fa-search"></i> <!-- Иконка поиска -->
     </div>
 
     <div class="product-container">
@@ -12,10 +12,12 @@
         {% set quantity = cart.get(product.id|string, 0) %}
         <div class="product{% if quantity > 0 %} selected{% endif %}" data-product-id="{{ product.id }}" data-name="{{ product.name | lower }}">
             <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
+
             <div class="product-info">
                 <p class="product-name">{{ product.name }}</p>
                 <p class="description">{{ product.description }}</p>
             </div>
+
             <div class="product-action">
                 {% if quantity > 0 %}
                 <div class="quantity-controls">
@@ -32,6 +34,7 @@
     </div>
 </div>
 
+<!-- Подключение Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 <style>
@@ -43,8 +46,9 @@
     }
 
     .search-bar {
+        display: block;
         width: 100%;
-        padding: 12px 16px 12px 44px; /* Отступ слева под иконку */
+        padding: 12px 16px 12px 36px; /* Место для иконки */
         font-size: 16px;
         border-radius: 12px;
         border: 1px solid #00c37e;
@@ -52,7 +56,6 @@
         color: #00ffae;
         box-shadow: 0 0 10px rgba(0, 195, 126, 0.3);
         transition: box-shadow 0.3s ease, transform 0.2s ease;
-        box-sizing: border-box;
     }
 
     .search-bar:focus {
@@ -64,28 +67,40 @@
     .search-icon {
         position: absolute;
         top: 50%;
-        left: 14px;
+        left: 10px;
         transform: translateY(-50%);
         font-size: 18px;
         color: #00ffae;
-        pointer-events: none;
+        transition: transform 0.3s ease, animation 0.3s ease;
     }
 
     .search-bar:focus + .search-icon {
-        transform: translateY(-50%) scale(1.1);
+        transform: translateY(-50%) scale(1.2);
+        animation: pulse 1.5s infinite; /* Добавлен пульсирующий эффект */
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: translateY(-50%) scale(1.2);
+        }
+        50% {
+            transform: translateY(-50%) scale(1.4);
+        }
+        100% {
+            transform: translateY(-50%) scale(1.2);
+        }
     }
 
     @media (max-width: 600px) {
         .search-bar {
-            font-size: 14px;
-            padding: 10px 14px 10px 42px;
+            font-size: 15px;
+            padding: 10px 14px 10px 30px; /* Уменьшаем padding на мобильных устройствах */
         }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 400px) {
         .search-bar {
-            font-size: 13px;
-            padding: 8px 12px 8px 40px;
+            padding: 8px 12px 8px 24px; /* Еще больше уменьшаем padding на маленьких устройствах */
         }
     }
 
