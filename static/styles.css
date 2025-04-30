@@ -388,9 +388,8 @@ p {
 /* === АДАПТИВНОСТЬ === */
 @media (max-width: 480px) {
   .product {
-    flex: 1 1 calc(33.333% - 12px); /* 3 карточки в ряд с отступами */
-    max-width: none;
-    padding: 6px;
+    max-width: 100px;
+    padding: 2px;
   }
 
   .product img {
@@ -415,18 +414,18 @@ p {
 
   .add-btn,
   .product button {
-    font-size: 13px;
-    padding: 6px 10px;
+    font-size: 12px;
+    padding: 4px 8px;
   }
 
   .quantity-controls input {
-    width: 36px;
+    width: 40px;
     font-size: 14px;
-    padding: 4px;
+    padding: 5px;
   }
   .quantity-controls button {
-    padding: 5px 10px;    /* Увеличено */
-    font-size: 15px;      /* Увеличено */
+    padding: 6px 12px;    /* Увеличено */
+    font-size: 16px;      /* Увеличено */
   }
 
   .cart-item {
