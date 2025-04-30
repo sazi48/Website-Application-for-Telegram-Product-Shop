@@ -420,15 +420,15 @@ p {
 
   .quantity-controls input {
     width: 30px;        /* Уменьшено */
-    font-size: 10px;    /* Уменьшено */
-    padding: 3px;       /* Уменьшено */
+    font-size: 12px;    /* Уменьшено */
+    padding: 2px 4px;       /* Уменьшено */
     text-align: center;
   }
 
   .quantity-controls button {
-    width: 32px;        /* Увеличено */
-    height: 32px;       /* Увеличено */
-    font-size: 18px;    /* Увеличено */
+    width: 16px;        /* Увеличено */
+    height: 16px;       /* Увеличено */
+    font-size: 9px;    /* Увеличено */
     padding: 0;
   }
 
