@@ -397,7 +397,7 @@ p {
     font-size: 11px;
   }
   .product-name {
-    font-size: 12px; /* Размер описания на мобильных */
+    font-size: 13px; /* Размер описания на мобильных */
   }
 
   .description {
