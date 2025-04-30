@@ -414,17 +414,17 @@ p {
 
   .add-btn,
   .product button {
-    font-size: 10px;
+    font-size: 11px;
     padding: 4px 8px;
   }
 
   .quantity-controls input {
     font-size: 7px;
-    padding: 3px;
+    padding: 5px;
   }
   .quantity-controls button {
     font-size: 4px;
-    padding: 3px;
+    padding: 5px;
   }
 
   .cart-item {
