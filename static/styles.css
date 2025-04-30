@@ -402,6 +402,8 @@ p {
 
   .description {
     font-size: 9px; /* Размер описания на мобильных */
+    margin-bottom: 6px;
+    line-height: 1.1;
   }
 
   .quantity-controls input,
