@@ -151,9 +151,9 @@ p {
 }
 
 .quantity-controls input {
-  width: 28px;
+  width: 25px;
   font-size: 11px;
-  padding: 3px;
+  padding: 2px 4px;
   text-align: center;
   background-color: #222;
   border: 1px solid #ccc;
@@ -419,8 +419,8 @@ p {
   }
 
   .quantity-controls input {
-    width: 30px;        /* Уменьшено */
-    font-size: 12px;    /* Уменьшено */
+    width: 25px;        /* Уменьшено */
+    font-size: 11px;    /* Уменьшено */
     padding: 2px 4px;       /* Уменьшено */
     text-align: center;
   }
@@ -444,37 +444,5 @@ p {
 
   .cart-item-name {
     font-size: 0.9rem;
-  }
-}
-@media (max-width: 360px) {
-  .quantity-controls input {
-    width: 25px;        /* Ещё меньше */
-    font-size: 9px;
-    padding: 2px;
-  }
-
-  .quantity-controls button {
-    width: 34px;        /* Немного шире для тача */
-    height: 34px;
-    font-size: 20px;
-    padding: 0;
-  }
-
-  .product-name {
-    font-size: 9px;
-  }
-
-  .description {
-    font-size: 7px;
-  }
-
-  .add-btn,
-  .product button {
-    font-size: 11px;
-    padding: 3px 6px;
-  }
-
-  .cart-item-name {
-    font-size: 0.85rem;
   }
 }
