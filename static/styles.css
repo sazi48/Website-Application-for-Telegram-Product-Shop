@@ -419,9 +419,9 @@ p {
   }
 
   .quantity-controls input {
-    width: 25px;        /* Уменьшено */
-    font-size: 11px;    /* Уменьшено */
-    padding: 2px 4px;       /* Уменьшено */
+    width: 15px;        /* Уменьшено */
+    font-size: 5px;    /* Уменьшено */
+    padding: 1px 2px;       /* Уменьшено */
     text-align: center;
   }
 
