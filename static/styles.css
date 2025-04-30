@@ -151,14 +151,16 @@ p {
 }
 
 .quantity-controls input {
-  width: 25px;
-  font-size: 11px;
-  padding: 2px 4px;
-  text-align: center;
-  background-color: #222;
-  border: 1px solid #ccc;
-  color: #e0e0e0;
-  border-radius: 4px;
+    width: 25px;
+    text-align: center;
+    border-radius: 6px;
+    padding: 6px;
+    font-size: 14px;
+    border: 1px solid #00c37e;
+    background-color: #1e1e1e;
+    color: #00ffae;
+    box-shadow: 0 0 8px rgba(0, 195, 126, 0.4);
+    transition: box-shadow 0.2s ease;
 }
 
 .quantity-controls button {
@@ -419,11 +421,17 @@ p {
   }
 
   .quantity-controls input {
-    width: 15px;        /* Уменьшено */
-    font-size: 5px;    /* Уменьшено */
-    padding: 1px 2px;       /* Уменьшено */
-    text-align: center;
-  }
+        width: 25px;
+        text-align: center;
+        border-radius: 6px;
+        padding: 6px;
+        font-size: 14px;
+        border: 1px solid #00c37e;
+        background-color: #1e1e1e;
+        color: #00ffae;
+        box-shadow: 0 0 8px rgba(0, 195, 126, 0.4);
+        transition: box-shadow 0.2s ease;
+    }
 
   .quantity-controls button {
     width: 16px;        /* Увеличено */
