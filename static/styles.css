@@ -390,14 +390,16 @@ p {
   .product {
     max-width: 100px;
   }
-    .description {
-    font-size: 7px; /* Размер описания на мобильных */
-  }
+
   .product-name,
   .description,
   .add-btn,
   .product button {
     font-size: 11px;
+  }
+
+  .description {
+    font-size: 7px; /* Размер описания на мобильных */
   }
 
   .quantity-controls input,
