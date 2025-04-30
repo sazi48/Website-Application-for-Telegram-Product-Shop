@@ -388,55 +388,53 @@ p {
 /* === АДАПТИВНОСТЬ === */
 @media (max-width: 480px) {
   .product {
-    max-width: 100px; /* Увеличено с 100px */
-    padding: 2; /* Минимум отступов */
+    max-width: 100px;
+    padding: 2px;
   }
 
   .product img {
-    width: 120px; /* Чёткая ширина */
-    height: 120px; /* Квадратные */
-    object-fit: cover;
-    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
     display: block;
-    margin: 0 auto;
+    margin: 0;
   }
 
   .product-name {
     font-size: 10px;
-    margin: 0 0 2px 0; /* Снижен отступ */
+    margin-top: 2px;
+    margin-bottom: 2px;
   }
 
   .description {
     font-size: 8px;
-    margin: 0 0 2px 0; /* Тоже снижен */
-    line-height: 1.3; /* Немного увеличено для читабельности */
+    margin: 2px 0;
+    line-height: 1.2;
   }
 
   .add-btn,
   .product button {
     font-size: 10px;
-    padding: 4px 7px; /* Немного меньше */
+    padding: 4px 8px;
   }
 
   .quantity-controls input,
   .quantity-controls button {
     font-size: 10px;
-    padding: 2px;
+    padding: 3px;
   }
 
   .cart-item {
     flex-direction: column;
     align-items: flex-start;
-    padding: 4px 0; /* Чтобы не залипали друг к другу */
   }
 
   .cart-item-controls {
-    margin-top: 8px;
+    margin-top: 10px;
     flex-wrap: wrap;
   }
 
   .cart-item-name {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 }
-
