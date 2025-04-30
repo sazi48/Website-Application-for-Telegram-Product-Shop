@@ -151,7 +151,7 @@ p {
 }
 
 .quantity-controls input {
-    width: 25px;
+    width: 30px;
     text-align: center;
     border-radius: 6px;
     padding: 6px;
@@ -167,7 +167,7 @@ p {
   background-color: #0f0;
   color: black;
   border: none;
-  padding: 3px 6px;
+  padding: 4px 7px;
   font-size: 12px;
   border-radius: 4px;
   cursor: pointer;
@@ -421,7 +421,7 @@ p {
   }
 
   .quantity-controls input {
-        width: 25px;
+        width: 30px;
         text-align: center;
         border-radius: 6px;
         padding: 6px;
@@ -434,9 +434,9 @@ p {
     }
 
   .quantity-controls button {
-    width: 16px;        /* Увеличено */
-    height: 16px;       /* Увеличено */
-    font-size: 9px;    /* Увеличено */
+    width: 20px;        /* Увеличено */
+    height: 20px;       /* Увеличено */
+    font-size: 12px;    /* Увеличено */
     padding: 0;
   }
 
