@@ -398,12 +398,13 @@ p {
   }
   .product-name {
     font-size: 13px; /* Размер описания на мобильных */
+    margin-bottom: 1px;
   }
 
   .description {
     font-size: 9px; /* Размер описания на мобильных */
-    margin-bottom: 6px;
-    line-height: 1.1;
+    margin-bottom: 3px;
+    line-height: 0.6;
   }
 
   .quantity-controls input,
