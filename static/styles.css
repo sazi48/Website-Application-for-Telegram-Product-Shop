@@ -391,15 +391,17 @@ p {
     max-width: 100px;
   }
 
-  .product-name,
   .description,
   .add-btn,
   .product button {
     font-size: 11px;
   }
+  .product-name {
+    font-size: 12px; /* Размер описания на мобильных */
+  }
 
   .description {
-    font-size: 7px; /* Размер описания на мобильных */
+    font-size: 9px; /* Размер описания на мобильных */
   }
 
   .quantity-controls input,
