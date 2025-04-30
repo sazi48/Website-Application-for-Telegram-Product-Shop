@@ -419,13 +419,13 @@ p {
   }
 
   .quantity-controls input {
-    width: 40px;
-    font-size: 14px;
-    padding: 5px;
+    width: 10px;
+    font-size: 4px;
+    padding: 1px;
   }
   .quantity-controls button {
-    padding: 6px 12px;    /* Увеличено */
-    font-size: 16px;      /* Увеличено */
+    padding: 3px 6px;    /* Увеличено */
+    font-size: 8px;      /* Увеличено */
   }
 
   .cart-item {
