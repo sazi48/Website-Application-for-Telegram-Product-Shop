@@ -389,19 +389,25 @@ p {
 @media (max-width: 480px) {
   .product {
     max-width: 100px;
+    padding: 6px 6px;
   }
 
-  .description,
-  .add-btn,
-  .product button {
-    font-size: 11px;
-  }
   .product-name {
-    font-size: 13px; /* Размер описания на мобильных */
+    font-size: 13px;
+    margin-top: 2px;
+    margin-bottom: 2px;
   }
 
   .description {
-    font-size: 9px; /* Размер описания на мобильных */
+    font-size: 9px;
+    margin: 2px 0;
+    line-height: 1.2;
+  }
+
+  .add-btn,
+  .product button {
+    font-size: 11px;
+    padding: 4px 8px;
   }
 
   .quantity-controls input,
@@ -422,25 +428,5 @@ p {
 
   .cart-item-name {
     font-size: 0.9rem;
-  }
-}
-@media (max-width: 480px) {
-  .product {
-    padding: 6px 6px;
-  }
-
-  .product-name {
-    margin-top: 2px;
-    margin-bottom: 2px;
-  }
-
-  .description {
-    margin: 2px 0;
-    line-height: 1.2;
-  }
-
-  .add-btn,
-  .product button {
-    padding: 4px 8px;
   }
 }
