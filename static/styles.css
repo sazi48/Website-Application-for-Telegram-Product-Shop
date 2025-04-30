@@ -395,7 +395,7 @@ p {
   .product img {
     width: 100%;
     height: auto;
-    border-radius: 6px;
+    border-radius: 8px;
     display: block;
     margin: 0;
   }
@@ -406,20 +406,20 @@ p {
   }
 
   .description {
-    font-size: 7px;
+    font-size: 8px;
     margin: 0 0 2px 0; /* Тоже снижен */
     line-height: 1.3; /* Немного увеличено для читабельности */
   }
 
   .add-btn,
   .product button {
-    font-size: 9px;
+    font-size: 10px;
     padding: 3px 6px; /* Немного меньше */
   }
 
   .quantity-controls input,
   .quantity-controls button {
-    font-size: 8px;
+    font-size: 10px;
     padding: 2px;
   }
 
@@ -438,3 +438,4 @@ p {
     font-size: 0.85rem;
   }
 }
+
