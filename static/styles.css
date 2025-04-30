@@ -393,11 +393,12 @@ p {
   }
 
   .product img {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
+    width: 120px; /* Чёткая ширина */
+    height: 120px; /* Квадратные */
+    object-fit: cover;
+    border-radius: 8px;
     display: block;
-    margin: 0;
+    margin: 0 auto;
   }
 
   .product-name {
