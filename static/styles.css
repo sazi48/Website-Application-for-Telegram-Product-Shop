@@ -388,8 +388,8 @@ p {
 /* === АДАПТИВНОСТЬ === */
 @media (max-width: 480px) {
   .product {
-    max-width: 120px; /* Увеличено с 100px */
-    padding: 0; /* Минимум отступов */
+    max-width: 100px; /* Увеличено с 100px */
+    padding: 2; /* Минимум отступов */
   }
 
   .product img {
