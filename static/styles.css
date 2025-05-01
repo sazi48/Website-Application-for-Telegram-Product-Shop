@@ -408,12 +408,12 @@ p {
     margin-top: 2px;
     margin-bottom: 2px;
     line-height: 1.2;
-    hyphens: manual;
-    word-break: keep-all;
-    overflow-wrap: break-word;
     white-space: normal;
-    max-width: 100%; /* важно для ограничения ширины блока */
-    text-align: center; /* если нужно красиво центрировать */
+    overflow-wrap: normal;
+    word-break: keep-all;
+    hyphens: manual;
+    text-align: center;
+    max-width: 100%;
   }
 
   .description {
