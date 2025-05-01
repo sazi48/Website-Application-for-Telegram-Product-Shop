@@ -114,6 +114,7 @@ p {
   hyphens: auto;
   text-align: center;
   font-weight: normal !important;
+  font-family: 'Geologica', sans-serif !important;
 }
 
 .product-info {
@@ -414,6 +415,7 @@ p {
     margin: 1px 0;
     line-height: 1.2;
     font-weight: normal !important;/* Убираем жирность */
+    font-family: 'Geologica', sans-serif !important;
   }
 
   .add-btn,
