@@ -396,7 +396,7 @@ p {
   }
 
   .product img {
-    width: 110%;
+    width: 120%;
     height: auto;
     border-radius: 6px;
     display: block;
@@ -412,7 +412,7 @@ p {
       word-break: break-word;       /* Переносить строки, но не слова */
       overflow-wrap: break-word;    /* Позволить перенос, но только по словам */
       hyphens: none;                /* Отключить автоматические переносы по слогам */
-      max-width: 110%;
+      max-width: 100%;
       text-align: center;
   }
 
