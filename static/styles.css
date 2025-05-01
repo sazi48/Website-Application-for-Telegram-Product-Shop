@@ -128,7 +128,7 @@ p {
 
 .add-btn,
 .product button {
-  font-size: 7px;
+  font-size: 12px;
   background-color: #1e1e1e; /* #00c853 */
   color: #00ff00;
   border: 1px solid #00ff00;
@@ -431,7 +431,7 @@ p {
 
   .add-btn,
   .product button {
-    font-size: 12px;
+    font-size: 7px;
     padding: 4px 8px;
   }
 
