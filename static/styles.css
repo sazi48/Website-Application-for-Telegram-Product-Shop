@@ -396,7 +396,7 @@ p {
   }
 
   .product img {
-    width: 100%;
+    width: 105%;
     height: auto;
     border-radius: 6px;
     display: block;
@@ -404,7 +404,7 @@ p {
   }
 
   .product-name {
-      font-size: 8px;
+      font-size: 9px;
       margin-top: 2px;
       margin-bottom: 2px;
       line-height: 1.2;
@@ -412,12 +412,12 @@ p {
       word-break: break-word;       /* Переносить строки, но не слова */
       overflow-wrap: break-word;    /* Позволить перенос, но только по словам */
       hyphens: none;                /* Отключить автоматические переносы по слогам */
-      max-width: 100%;
+      max-width: 105%;
       text-align: center;
   }
 
   .description {
-    font-size: 6px;
+    font-size: 7px;
     margin: 1px 0;
     line-height: 1.2;
     font-weight: normal !important;/* Убираем жирность */
