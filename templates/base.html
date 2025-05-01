@@ -75,12 +75,50 @@
         50% { transform: scale(1.2); }
         100% { transform: scale(1); }
     }
+    .logo-img {
+      max-height: 40px;         /* ограничение по высоте, чтобы не выходила за пределы шапки */
+      height: auto;
+      width: auto;
+      max-width: 100%;          /* чтобы не вылезала за контейнер */
+      display: block;
+    }
+    .logo a {
+      display: flex;
+      align-items: center;
+    }
+    .site-header {
+        position: relative;
+        height: 64px;
+        background-color: #1e1e1e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 20px;
+        z-index: 10;
+    }
+
+    .logo-center {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .logo-img {
+        max-height: 40px;
+        height: auto;
+        width: auto;
+        max-width: 100%;
+        display: block;
+    }
+
     </style>
 </head>
 <body>
     <header class="site-header">
-        <div class="logo">
-            <a href="{{ url_for('catalog') }}">HEATME</a>
+        <div class="logo-center">
+            <a href="/">
+                <img src="/static/images/logo.jpg" alt="HeatMe" class="logo-img">
+            </a>
         </div>
     </header>
 
