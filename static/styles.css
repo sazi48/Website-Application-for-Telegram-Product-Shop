@@ -403,14 +403,14 @@ p {
   }
 
   .product-name {
-    font-size: 10px;
+    font-size: 8px;
     margin-top: 2px;
     margin-bottom: 2px;
   }
 
   .description {
-    font-size: 8px;
-    margin: 2px 0;
+    font-size: 6px;
+    margin: 1px 0;
     line-height: 1.2;
   }
 
