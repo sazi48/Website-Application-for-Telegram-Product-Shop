@@ -412,6 +412,7 @@ p {
     font-size: 6px;
     margin: 1px 0;
     line-height: 1.2;
+    font-weight: normal; /* Убираем жирность */
   }
 
   .add-btn,
