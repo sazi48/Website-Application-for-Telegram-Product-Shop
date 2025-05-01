@@ -404,21 +404,20 @@ p {
   }
 
   .product-name {
-      font-size: 9px;
+      font-size: 8px;
       margin-top: 2px;
       margin-bottom: 2px;
       line-height: 1.2;
       white-space: normal;
-      word-break: keep-all;
-      overflow-wrap: break-word;
-      hyphens: manual;
+      word-break: break-word;       /* Переносить строки, но не слова */
+      overflow-wrap: break-word;    /* Позволить перенос, но только по словам */
+      hyphens: none;                /* Отключить автоматические переносы по слогам */
       max-width: 100%;
-      overflow: hidden;
       text-align: center;
   }
 
   .description {
-    font-size: 7px;
+    font-size: 6px;
     margin: 1px 0;
     line-height: 1.2;
     font-weight: normal !important;/* Убираем жирность */
