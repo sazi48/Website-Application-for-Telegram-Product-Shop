@@ -391,38 +391,37 @@ p {
 /* === АДАПТИВНОСТЬ === */
 @media (max-width: 480px) {
   .product {
-    max-width: 110px;
-    padding: 4px;
+    max-width: 105px;
+    padding: 2px;
     word-break: normal;
   }
 
   .product img {
-    width: 100%;
+    width: 105%;
     height: auto;
     border-radius: 6px;
     display: block;
-    margin: 0 auto;
+    margin: 0;
   }
 
   .product-name {
-    font-size: 9px;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    line-height: 1.2;
-    white-space: normal;         /* Разрешить перенос по пробелам */
-    word-break: normal;          /* Не ломать слова */
-    overflow-wrap: normal;       /* Переносить только по пробелу */
-    hyphens: none;               /* Отключить перенос по слогам */
-    text-align: center;
+      font-size: 9px;
+      margin-top: 1px;
+      margin-bottom: 1px;
+      line-height: 1.2;
+      white-space: normal;
+      word-break: break-word;       /* Переносить строки, но не слова */
+      overflow-wrap: break-word;    /* Позволить перенос, но только по словам */
+      hyphens: none;                /* Отключить автоматические переносы по слогам */
+      text-align: center;
   }
 
   .description {
     font-size: 7px;
     margin: 1px 0;
     line-height: 1.2;
-    font-weight: normal !important;
+    font-weight: normal !important;/* Убираем жирность */
     font-family: 'Geologica', sans-serif !important;
-    text-align: center;
   }
 
   .add-btn,
@@ -432,22 +431,22 @@ p {
   }
 
   .quantity-controls input {
-    width: 25px;
-    text-align: center;
-    border-radius: 6px;
-    padding: 6px;
-    font-size: 14px;
-    border: 1px solid #00c37e;
-    background-color: #1e1e1e;
-    color: #00ffae;
-    box-shadow: 0 0 8px rgba(0, 195, 126, 0.4);
-    transition: box-shadow 0.2s ease;
-  }
+        width: 25px;
+        text-align: center;
+        border-radius: 6px;
+        padding: 6px;
+        font-size: 14px;
+        border: 1px solid #00c37e;
+        background-color: #1e1e1e;
+        color: #00ffae;
+        box-shadow: 0 0 8px rgba(0, 195, 126, 0.4);
+        transition: box-shadow 0.2s ease;
+    }
 
   .quantity-controls button {
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
+    width: 20px;        /* Увеличено */
+    height: 20px;       /* Увеличено */
+    font-size: 12px;    /* Увеличено */
     padding: 0;
   }
 
