@@ -398,7 +398,7 @@ p {
   .product img {
     width: 120%;
     height: auto;
-    border-radius: 6px;
+    border-radius: 3px;
     display: block;
     margin: 0;
   }
