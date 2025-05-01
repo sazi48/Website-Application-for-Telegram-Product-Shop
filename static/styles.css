@@ -129,17 +129,20 @@ p {
 .add-btn,
 .product button {
   font-size: 12px;
-  background-color: #00c853;
-  color: black;
-  border: none;
+  background-color: #1e1e1e; /* #00c853 */
+  color: #00ff00;
+  border: 1px solid #00ff00;
   border-radius: 6px;
   cursor: pointer;
   padding: 6px 10px;
+  font-family: 'benzin-semibold', sans-serif;
+
 }
 
 .add-btn:hover,
 .product button:hover {
-  background-color: #00e676;
+  background-color: #00ff00;
+  color: black;
 }
 
 /* === КНОПКИ КОЛИЧЕСТВА === */

@@ -26,7 +26,7 @@
                     <button class="neon-btn" onclick="changeQuantity({{ product.id }}, 1)">+</button>
                 </div>
                 {% else %}
-                <button class="add-btn" onclick="setQuantity({{ product.id }}, 1)">Добавить</button>
+                <button class="add-btn" onclick="setQuantity({{ product.id }}, 1)">ДОБАВИТЬ</button>
                 {% endif %}
             </div>
         </div>
@@ -42,7 +42,7 @@
         position: relative;
         max-width: 600px;
         width: 80%;
-        margin: 5px auto 0 auto; /* Добавлен отступ сверху */
+        margin: 7px auto 0 auto; /* Добавлен отступ сверху */
         display: flex;
         justify-content: center;
         align-items: center; /* если нужно и по вертикали */
@@ -54,9 +54,9 @@
         padding: 12px 16px 12px 36px; /* Место для иконки */
         font-size: 16px;
         border-radius: 30px;
-        border: 1px solid #00c37e;
+        border: 1px solid #00ff00;
         background-color: #1e1e1e;
-        color: #00ffae;
+        color: #00ff00;
         box-shadow: 0 0 10px rgba(0, 195, 126, 0.3);
         transition: box-shadow 0.3s ease, transform 0.2s ease;
     }
@@ -73,7 +73,7 @@
         left: 10px;
         transform: translateY(-50%);
         font-size: 18px;
-        color: #00ffae;
+        color: #00ff00;
         transition: transform 0.3s ease, animation 0.3s ease;
     }
 
@@ -117,10 +117,11 @@
     .product:hover {
         box-shadow: 0 0 20px rgba(0, 255, 174, 0.5);
         transform: translateY(-4px) scale(1.02);
+        border: 1px solid #00ff00;
     }
 
     .product.selected {
-        border: 2px solid #00ffae;
+        border: 2px solid #00ff00;
         box-shadow: 0 0 15px rgba(0, 255, 174, 0.6);
         background-color: #151515;
     }
