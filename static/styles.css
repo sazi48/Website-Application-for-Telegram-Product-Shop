@@ -410,9 +410,9 @@ p {
       margin-bottom: 1px;
       line-height: 1.2;
       white-space: normal;
-      word-break: break-word;       /* Переносить строки, но не слова */
-      overflow-wrap: break-word;    /* Позволить перенос, но только по словам */
-      hyphens: none;                /* Отключить автоматические переносы по слогам */
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
       text-align: center;
   }
 
