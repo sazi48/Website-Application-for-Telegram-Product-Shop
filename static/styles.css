@@ -75,7 +75,7 @@ p {
 
 .product {
   background-color: #1a1a1a;
-  border: 1px solid #00ff00; /* Зеленая рамка товара */
+
   border-radius: 10px;
   padding: 10px;
   max-width: 320px;
@@ -405,13 +405,13 @@ p {
   }
 
   .product-name {
-    font-size: 8px;
+    font-size: 9px;
     margin-top: 2px;
     margin-bottom: 2px;
   }
 
   .description {
-    font-size: 6px;
+    font-size: 7px;
     margin: 1px 0;
     line-height: 1.2;
     font-weight: normal !important;/* Убираем жирность */
