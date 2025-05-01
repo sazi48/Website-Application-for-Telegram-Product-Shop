@@ -75,7 +75,6 @@ p {
 
 .product {
   background-color: #1a1a1a;
-
   border-radius: 10px;
   padding: 10px;
   max-width: 320px;
@@ -408,6 +407,7 @@ p {
     font-size: 9px;
     margin-top: 2px;
     margin-bottom: 2px;
+    line-height: 1.2;
   }
 
   .description {
