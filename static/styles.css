@@ -402,12 +402,13 @@ p {
     border-radius: 6px;
     display: block;
     margin: 0;
+    margin-bottom: 4px;
   }
 
   .product-name {
       font-size: 6px;
-      margin-top: 1px;
-      margin-bottom: 1px;
+      margin-top: 0px;
+      margin-bottom: 2px;
       line-height: 1.2;
       white-space: normal;
       word-break: break-word;
@@ -420,6 +421,7 @@ p {
     font-size: 7px;
     margin: 1px 0;
     line-height: 1.2;
+    margin-bottom: 2px;
     font-weight: normal !important;/* Убираем жирность */
     font-family: 'Geologica', sans-serif !important;
   }
