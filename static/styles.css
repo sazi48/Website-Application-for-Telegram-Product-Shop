@@ -408,12 +408,12 @@ p {
     margin-top: 2px;
     margin-bottom: 2px;
     line-height: 1.2;
-    white-space: normal;
-    overflow-wrap: normal;
-    word-break: keep-all;
+    word-break: break-word;
+    overflow-wrap: break-word;
     hyphens: manual;
     text-align: center;
     max-width: 100%;
+    overflow: hidden;
   }
 
   .description {
