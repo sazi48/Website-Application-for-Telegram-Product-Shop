@@ -405,13 +405,13 @@ p {
   }
 
   .product-name {
-      font-size: 9px;
+      font-size: 6px;
       margin-top: 1px;
       margin-bottom: 1px;
       line-height: 1.2;
       white-space: normal;
-      word-break: normal;
-      overflow-wrap: normal;
+      word-break: break-word;
+      overflow-wrap: break-word;
       hyphens: none;
       text-align: center;
   }
