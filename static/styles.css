@@ -99,7 +99,7 @@ p {
   margin-top: 4px;
   word-break: normal;
   overflow-wrap: break-word;
-  hyphens: auto;
+  hyphens: none;
   text-align: center;
 }
 
