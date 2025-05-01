@@ -409,12 +409,12 @@ p {
       margin-bottom: 2px;
       line-height: 1.2;
       white-space: normal;
-      word-break: keep-all;          /* ✅ Не разрывать слова вообще */
-      overflow-wrap: break-word;     /* ✅ Переносить по пробелам, если нужно */
-      hyphens: manual;               /* Только ручные дефисы */
-      max-width: 100%;               /* Не позволять выходить за рамки */
-      overflow: hidden;              /* Прячем вылезающий текст */
-      text-align: center;            /* Центрируем текст */
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      hyphens: manual;
+      max-width: 100%;
+      overflow: hidden;
+      text-align: center;
   }
 
   .description {
