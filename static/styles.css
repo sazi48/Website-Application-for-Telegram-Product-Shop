@@ -412,6 +412,7 @@ p {
     word-break: normal;        /* Не ломать слова */
     overflow-wrap: break-word; /* Переносить только по словам */
     white-space: normal;       /* Разрешить перенос строк */
+    font-size: clamp(7px, 2vw, 10px);
   }
 
   .description {
