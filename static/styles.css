@@ -391,7 +391,7 @@ p {
 /* === АДАПТИВНОСТЬ === */
 @media (max-width: 480px) {
   .product {
-    max-width: 110px;
+    max-width: 105px;
     padding: 2px;
   }
 
