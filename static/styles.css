@@ -136,7 +136,6 @@ p {
   cursor: pointer;
   padding: 6px 10px;
   font-family: 'benzin-semibold', sans-serif;
-
 }
 
 .add-btn:hover,
@@ -432,7 +431,7 @@ p {
   .add-btn,
   .product button {
     font-size: 7px;
-    padding: 4px 8px;
+    padding: 3px 7px;
   }
 
   .quantity-controls input {
