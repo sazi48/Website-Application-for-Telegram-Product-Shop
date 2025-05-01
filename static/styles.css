@@ -404,15 +404,17 @@ p {
   }
 
   .product-name {
-    font-size: 9px;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    line-height: 1.2;
-    hyphens: none;             /* Не переносить по слогам */
-    word-break: normal;        /* Не ломать слова */
-    overflow-wrap: break-word; /* Переносить только по словам */
-    white-space: normal;       /* Разрешить перенос строк */
-    font-size: clamp(7px, 2vw, 10px);
+      font-size: 9px;
+      margin-top: 2px;
+      margin-bottom: 2px;
+      line-height: 1.2;
+      white-space: normal;
+      word-break: keep-all;          /* ✅ Не разрывать слова вообще */
+      overflow-wrap: break-word;     /* ✅ Переносить по пробелам, если нужно */
+      hyphens: manual;               /* Только ручные дефисы */
+      max-width: 100%;               /* Не позволять выходить за рамки */
+      overflow: hidden;              /* Прячем вылезающий текст */
+      text-align: center;            /* Центрируем текст */
   }
 
   .description {
