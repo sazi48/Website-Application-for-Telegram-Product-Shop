@@ -408,8 +408,8 @@ p {
     margin-top: 2px;
     margin-bottom: 2px;
     line-height: 1.2;
-    hyphens: none;
-    word-break: normal;
+    hyphens: manual;
+    word-break: keep-all;
     overflow-wrap: break-word;
     white-space: normal;
     max-width: 100%; /* важно для ограничения ширины блока */
