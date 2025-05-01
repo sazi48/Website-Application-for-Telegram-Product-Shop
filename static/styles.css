@@ -113,6 +113,7 @@ p {
   overflow-wrap: break-word;
   hyphens: auto;
   text-align: center;
+  font-weight: normal !important;
 }
 
 .product-info {
@@ -412,7 +413,7 @@ p {
     font-size: 6px;
     margin: 1px 0;
     line-height: 1.2;
-    font-weight: normal; /* Убираем жирность */
+    font-weight: normal !important;/* Убираем жирность */
   }
 
   .add-btn,
