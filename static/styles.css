@@ -405,15 +405,15 @@ p {
 
   .product-name {
     font-size: 9px;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    margin-top: 0.2px;
+    margin-bottom: 0.2px;
     line-height: 1.2;
-    word-break: break-word;
-    overflow-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: keep-all;
     hyphens: manual;
     text-align: center;
     max-width: 100%;
-    overflow: hidden;
   }
 
   .description {
