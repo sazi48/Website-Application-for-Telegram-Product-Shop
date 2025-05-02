@@ -81,6 +81,7 @@ def update_cart(product_id):
 def cart():
     cart = session.get("cart", {})
     cart_items = []
+    total_price = 0
 
     for product_id_str, quantity in cart.items():
         product = next((p for p in products if str(p["id"]) == product_id_str), None)
@@ -91,9 +92,10 @@ def cart():
                 "image": quote(product["image"]),  # Кодируем путь
                 "quantity": quantity
             })
+            total_price += quantity * 1400  # <-- прибавляем цену (можешь заменить 1400 на product["price"], если она есть)
 
     cart_count = sum(cart.values())
-    return render_template("cart.html", cart_items=cart_items, cart_count=cart_count)
+    return render_template("cart.html", cart_items=cart_items, cart_count=cart_count, total_price=total_price)
 
 
 @app.route("/remove_from_cart/<int:product_id>", methods=["POST"])
