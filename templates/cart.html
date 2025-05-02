@@ -2,6 +2,9 @@
 
 {% block content %}
 <h1 class="cart-title">Ваша корзина</h1>
+<div id="cart-note" class="cart-note">
+    1 товар(200 г) – 1400 Рублей
+</div>
 
 {% if not cart_items %}
     <p style="text-align: center; color: white;">Корзина пуста.</p>
@@ -44,16 +47,19 @@
 
     .cart-item-card {
         background-color: #1a1a1a;
-        border: 1.5px solid #00ff00;
+        border: 2px solid #00ff00;
         border-radius: 10px;
         padding: 12px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
-        box-shadow: 0 0 4px #00ff00, 0 0 8px #00ff00;
         transition: all 0.3s ease;
     }
+    .cart-item-card:hover {
+        box-shadow: 0 0 4px white, 0 0 8px white;
+    }
+
 
     .cart-item-card img {
         width: 60px;
@@ -71,7 +77,7 @@
     }
 
     .cart-item-quantity {
-        color: white;
+        color: #00ff00;
         margin: 0 10px;
     }
 
@@ -106,9 +112,9 @@
         font-weight: bold;
         padding: 12px 28px;
         border: 1.5px solid #00ff00;
+        box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
         border-radius: 10px;
         text-decoration: none;
-        box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
         transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
@@ -192,13 +198,12 @@
     }
     .cart-item-card {
         background-color: #1a1a1a;
-        border: 1.5px solid #00ff00;
+        border: 2px solid white;
         border-radius: 10px;
         padding: 12px;
         display: flex;
         align-items: center;
         gap: 16px;
-        box-shadow: 0 0 4px #00ff00, 0 0 8px #00ff00;
         transition: all 0.3s ease;
         text-align: left;
     }
@@ -233,7 +238,7 @@
     }
 
     .cart-item-quantity {
-        color: white;
+        color: #00ff00;
         font-weight: bold;
         padding: 0 4px;
         min-width: 24px;
@@ -242,7 +247,7 @@
 
     .quantity-btn, .remove-btn {
         background-color: #2e2e2e;
-        color: white;
+        color: #00ff00;
         border: 1px solid #00ff00;
         font-weight: bold;
         font-size: 16px;
@@ -250,6 +255,9 @@
         padding: 6px 10px;
         cursor: pointer;
         transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+    .remove-btn {
+        color: red;
     }
 
     .quantity-btn:hover, .remove-btn:hover {
@@ -281,6 +289,29 @@
             text-align: left;
         }
     }
+    .cart-note {
+        text-align: center;
+        background-color: #1e1e1e;
+        color: #00ff00;
+        border-radius: 10px;
+        padding: 6px 12px;
+        font-weight: 500;
+        font-size: 14px;
+        margin: 0 auto 12px auto;
+        max-width: fit-content;
+        border: 1.5px solid #00ff00;
+        box-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+        font-family: 'activistka_wide', sans-serif;
+        font-weight: bold;
+    }
+
+    @media (max-width: 480px) {
+        .cart-note {
+            font-size: 14px;
+            padding: 8px 12px;
+        }
+    }
+
 
 
 
@@ -290,16 +321,24 @@
 <script>
     function updateOrderButtonVisibility() {
         const orderButton = document.querySelector('.order-button');
+        const noteBlock = document.getElementById('cart-note');
         const items = document.querySelectorAll('.cart-item-card');
-        if (orderButton) {
+
+        if (orderButton && noteBlock) {
             if (items.length === 0) {
                 orderButton.classList.add('fade-out');
-                setTimeout(() => orderButton.remove(), 500);
+                noteBlock.classList.add('fade-out');
+                setTimeout(() => {
+                    orderButton.remove();
+                    noteBlock.remove();
+                }, 500);
             } else {
                 orderButton.classList.remove('fade-out');
+                noteBlock.classList.remove('fade-out');
             }
         }
     }
+
 
     function removeFromCart(productId) {
         fetch(`/remove_from_cart_ajax/${productId}`, {
