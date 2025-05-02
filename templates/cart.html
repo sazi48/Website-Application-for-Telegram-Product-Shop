@@ -12,15 +12,20 @@
     <div class="cart-container">
         {% for item in cart_items %}
         <div class="cart-item-card" data-id="{{ item.id }}">
-            <img src="/static/images/{{ item.image }}" alt="{{ item.name }}">
-            <div class="cart-item-name">{{ item.name }}</div>
-            <div class="cart-item-quantity" id="quantity-{{ item.id }}">{{ item.quantity }}</div>
-            <div class="cart-item-actions">
-                <button type="button" class="quantity-btn" onclick="updateQuantity({{ item.id }}, 'decrease')">−</button>
-                <button type="button" class="remove-btn" onclick="removeFromCart({{ item.id }})">Удалить</button>
-                <button type="button" class="quantity-btn" onclick="updateQuantity({{ item.id }}, 'increase')">+</button>
+            <div class="cart-item-left">
+                <img src="/static/images/{{ item.image }}" alt="{{ item.name }}">
+            </div>
+            <div class="cart-item-right">
+                <div class="cart-item-name">{{ item.name }}</div>
+                <div class="cart-item-actions">
+                    <button type="button" class="quantity-btn" onclick="updateQuantity({{ item.id }}, 'decrease')">−</button>
+                    <div class="cart-item-quantity" id="quantity-{{ item.id }}">{{ item.quantity }}</div>
+                    <button type="button" class="quantity-btn" onclick="updateQuantity({{ item.id }}, 'increase')">+</button>
+                    <button type="button" class="remove-btn" onclick="removeFromCart({{ item.id }})">Удалить</button>
+                </div>
             </div>
         </div>
+
         {% endfor %}
     </div>
 
@@ -161,23 +166,23 @@
 
     .toast {
         visibility: hidden;
-        min-width: 260px;
-        margin-left: -130px;
+        min-width: 200px;               /* стало меньше */
+        margin-left: -100px;
         background-color: #121212;
         color: #00ff00;
         text-align: center;
-        border-radius: 12px;
-        padding: 14px 24px;
+        border-radius: 10px;            /* чуть мягче */
+        padding: 10px 18px;             /* компактнее */
         position: fixed;
         z-index: 9999;
         left: 50%;
-        bottom: 40px;
-        font-size: 16px;
-        border: 2px solid #00ff00;
-        box-shadow: 0 0 6px #00ff00, 0 0 12px #00ff00;
-        font-weight: bold;
+        bottom: 30px;                   /* чуть выше */
+        font-size: 14px;                /* меньше шрифт */
+        border: 1px solid #00ff00;      /* тоньше граница */
+        box-shadow: 0 0 4px #00ff00, 0 0 8px #00ff00; /* меньше свечения */
+        font-weight: 600;               /* чуть легче жирность */
         opacity: 0;
-        transition: opacity 0.5s ease, transform 0.5s ease;
+        transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
     .toast.show {
@@ -185,6 +190,97 @@
         opacity: 1;
         transform: translateY(-10px);
     }
+    .cart-item-card {
+        background-color: #1a1a1a;
+        border: 1.5px solid #00ff00;
+        border-radius: 10px;
+        padding: 12px;
+        display: flex;
+        gap: 16px;
+        box-shadow: 0 0 4px #00ff00, 0 0 8px #00ff00;
+        transition: all 0.3s ease;
+        flex-wrap: nowrap;
+    }
+
+    .cart-item-left img {
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    .cart-item-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1;
+    }
+
+    .cart-item-name {
+        font-weight: bold;
+        color: white;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .cart-item-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .cart-item-quantity {
+        color: white;
+        font-weight: bold;
+        padding: 0 4px;
+        min-width: 24px;
+        text-align: center;
+    }
+
+    .quantity-btn, .remove-btn {
+        background-color: #2e2e2e;
+        color: white;
+        border: 1px solid #00ff00;
+        font-weight: bold;
+        font-size: 16px;
+        border-radius: 6px;
+        padding: 6px 10px;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .quantity-btn:hover, .remove-btn:hover {
+        background-color: #444;
+        transform: translateY(-1px);
+    }
+
+    .remove-btn {
+        border-color: #ff0033;
+        background-color: #2e2e2e;
+    }
+
+    .remove-btn:hover {
+        background-color: #ff0033;
+        color: white;
+    }
+    @media (max-width: 480px) {
+        .cart-item-card {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .cart-item-right {
+            align-items: center;
+        }
+
+        .cart-item-actions {
+            justify-content: center;
+        }
+    }
+
+
 </style>
 
 <script>
