@@ -196,13 +196,11 @@
         border-radius: 10px;
         padding: 12px;
         display: flex;
-        align-items: center;
         gap: 16px;
         box-shadow: 0 0 4px #00ff00, 0 0 8px #00ff00;
         transition: all 0.3s ease;
-        text-align: left;
+        flex-wrap: nowrap;
     }
-
 
     .cart-item-left img {
         width: 100px;
@@ -269,7 +267,8 @@
     @media (max-width: 480px) {
         .cart-item-card {
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
+            text-align: center;
         }
 
         .cart-item-right {
@@ -280,6 +279,7 @@
             justify-content: center;
         }
     }
+
 
 
 </style>
