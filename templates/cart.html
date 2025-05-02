@@ -2,9 +2,12 @@
 
 {% block content %}
 <h1 class="cart-title">Ваша корзина</h1>
+{% if cart_items %}
 <div id="cart-note" class="cart-note">
-    1 товар(200 г) – 1400 Рублей
+    1 товар (200 г) – 1400 Рублей
 </div>
+{% endif %}
+
 
 {% if not cart_items %}
     <p style="text-align: center; color: white;">Корзина пуста.</p>
