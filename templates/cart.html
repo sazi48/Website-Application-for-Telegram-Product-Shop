@@ -35,26 +35,12 @@
         {% endfor %}
     </div>
 
-    <div>
-        <div class="total-price-block">
-            Итоговая сумма: <span class="price">{{ total_price }} ₽</span>
-        </div>
-    </div>
-
     <div style="text-align: center; margin-top: 20px;">
         <a href="{{ url_for('order') }}" class="order-button">Оформить заказ</a>
     </div>
 {% endif %}
 
 <style>
-    .total-price-block{
-        text-align: center;
-        margin-top: 20px;
-        margin-bottom: 30px;
-        font-family: 'activistka_wide', sans-serif;
-        font-size: 18px;
-        font-weight: bold;
-    }
     .cart-container {
         display: flex;
         flex-direction: column;
