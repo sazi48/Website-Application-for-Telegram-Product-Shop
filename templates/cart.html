@@ -4,8 +4,9 @@
 <h1 class="cart-title">Ваша корзина</h1>
 {% if cart_items %}
 <div id="cart-note" class="cart-note">
-    1 товар (200 г) – 1400 Рублей
+    <!-- содержимое обновляется скриптом -->
 </div>
+
 {% endif %}
 
 
@@ -356,6 +357,7 @@
                     setTimeout(() => {
                         itemElement.remove();
                         updateOrderButtonVisibility();
+                        updateCartNote();
                         if (document.querySelectorAll('.cart-item-card').length === 0) {
                             document.querySelector('.cart-container').innerHTML = `
                                 <p style="text-align: center; color: white;">Корзина пуста.</p>
@@ -391,6 +393,7 @@
                 }
                 document.querySelectorAll('.cart-count').forEach(el => el.textContent = data.cart_count);
                 updateOrderButtonVisibility();
+                updateCartNote();
             }
         });
     }
@@ -404,7 +407,35 @@
         }, 2500);
     }
 
-    document.addEventListener('DOMContentLoaded', updateOrderButtonVisibility);
+    document.addEventListener('DOMContentLoaded', () => {
+        updateOrderButtonVisibility();
+        updateCartNote();
+    });
+
+
+    function updateCartNote() {
+        const items = document.querySelectorAll('.cart-item-card');
+        let totalQuantity = 0;
+        const pricePerItem = 1400;
+
+        items.forEach(item => {
+            const quantity = parseInt(item.querySelector('.cart-item-quantity').textContent);
+            totalQuantity += quantity;
+        });
+
+        const totalPrice = totalQuantity * pricePerItem;
+        const note = document.getElementById('cart-note');
+
+        if (note) {
+            if (totalQuantity > 0) {
+                const suffix = totalQuantity === 1 ? "товар" : (totalQuantity >= 2 && totalQuantity <= 4 ? "товара" : "товаров");
+                note.textContent = `${totalQuantity} ${suffix} – ${totalPrice} Рублей`;
+            } else {
+                note.remove();
+            }
+        }
+    }
+
 </script>
 
 <!-- Всплывающее уведомление -->
