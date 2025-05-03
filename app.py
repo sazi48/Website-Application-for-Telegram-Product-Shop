@@ -183,7 +183,7 @@ def order():
         orders.append(order)
         next_order_id += 1
         # Формируем текст сообщения
-        order_text = f"<b>Новый заказ #{order.id}</b>\n"
+        order_text = f"Новый заказ #{order.id}\n"
         order_text += f"👤 Имя: {order.name}\n"
         order_text += f"📞 Телефон: {order.phone}\n"
         order_text += f"🏠 Адрес: {order.address}\n"
