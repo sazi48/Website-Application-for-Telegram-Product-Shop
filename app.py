@@ -153,14 +153,14 @@ def update_cart_quantity_ajax(product_id):
 
 # Модель заказа
 class Order:
-    def __init__(self, id, name, address, phone, cart, zavedenie, telegrammuser):
+    def __init__(self, id, name, address, phone, cart, zavedenie, telegramuser):
         self.id = id
         self.name = name
         self.address = address
         self.phone = phone
         self.cart = cart
         self.zavedenie = zavedenie  # ← добавляем это поле
-        self.telegrammuser = telegrammuser
+        self.telegramuser = telegramuser
         self.status = 'Новый заказ'
 
 # Страница оформления заказа
@@ -173,7 +173,7 @@ def order():
         name = request.form['name']
         address = request.form['address']
         phone = request.form['phone']
-        telegrammuser = request.form['telegrammuser']
+        telegramuser = request.form['telegramuser']
         zavedenie = request.form['zavedenie']
 
         if not cart:
@@ -181,7 +181,7 @@ def order():
             return redirect(url_for('cart'))
 
         # Создаём заказ
-        order = Order(id=next_order_id, name=name, address=address, phone=phone, cart=cart.copy(), zavedenie=zavedenie, telegrammuser = telegrammuser)
+        order = Order(id=next_order_id, name=name, address=address, phone=phone, cart=cart.copy(), zavedenie=zavedenie, telegramuser = telegramuser)
         orders.append(order)
         next_order_id += 1
         # Формируем текст сообщения
@@ -189,7 +189,7 @@ def order():
         order_text += f"👤 Имя: {order.name}\n"
         order_text += f"📞 Телефон: {order.phone}\n"
         order_text += f"🏠 Адрес: {order.address}\n"
-        order_text += f"📣 Телеграмм: {order.telegrammuser}\n"
+        order_text += f"📣 Телеграм: {order.telegramuser}\n"
         order_text += f"🏪 Заведение: {order.zavedenie}\n"
         order_text += "\n🛒 Товары:\n"
 
