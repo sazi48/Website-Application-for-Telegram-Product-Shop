@@ -185,13 +185,13 @@ def order():
         orders.append(order)
         next_order_id += 1
         # Forming the message text
-        order_text = f"Новый заказ #{order.id}\n"
-        order_text += f"👤 Имя: {order.name}\n"
-        order_text += f"📞 Телефон: {order.phone}\n"
-        order_text += f"🏠 Адрес: {order.address}\n"
-        order_text += f"📣 Телеграм: {order.telegramuser}\n"
-        order_text += f"🏪 Заведение: {order.zavedenie}\n"
-        order_text += "\n🛒 Товары:\n"
+        order_text = f"New order #{order.id}\n"
+        order_text += f"👤 Name:{order.name}\n"
+        order_text += f"📞 Telephone: {order.phone}\n"
+        order_text += f"🏠 Address: {order.address}\n"
+        order_text += f"📣 Telegram: {order.telegramuser}\n"
+        order_text += f"🏪 Institution: {order.zavedenie}\n"
+        order_text += "\n🛒 Goods: \n"
 
         for product_id_str, quantity in order.cart.items():
             product = next((p for p in products if str(p["id"]) == product_id_str), None)
