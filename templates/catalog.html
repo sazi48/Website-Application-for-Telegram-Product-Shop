@@ -3,8 +3,8 @@
 {% block content %}
 <div class="container">
     <div class="search-container">
-        <input type="text" id="search-input" placeholder="Поиск товаров..." class="search-bar">
-        <i class="search-icon fas fa-search"></i> <!-- Иконка поиска -->
+        <input type="text" id="search-input" placeholder="Searching for products..." class="search-bar">
+        <i class="search-icon fas fa-search"></i>
     </div>
 
     <div class="product-container">
@@ -26,7 +26,7 @@
                     <button class="neon-btn" onclick="changeQuantity({{ product.id }}, 1)">+</button>
                 </div>
                 {% else %}
-                <button class="add-btn" onclick="setQuantity({{ product.id }}, 1)">ДОБАВИТЬ</button>
+                <button class="add-btn" onclick="setQuantity({{ product.id }}, 1)">ADD</button>
                 {% endif %}
             </div>
         </div>
@@ -34,7 +34,7 @@
     </div>
 </div>
 
-<!-- Подключение Font Awesome -->
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 <style>
@@ -42,16 +42,16 @@
         position: relative;
         max-width: 600px;
         width: 80%;
-        margin: 7px auto 0 auto; /* Добавлен отступ сверху */
+        margin: 7px auto 0 auto;
         display: flex;
         justify-content: center;
-        align-items: center; /* если нужно и по вертикали */
+        align-items: center;
     }
 
     .search-bar {
         display: block;
         width: 100%;
-        padding: 12px 16px 12px 36px; /* Место для иконки */
+        padding: 12px 16px 12px 36px;
         font-size: 16px;
         border-radius: 30px;
         border: 1px solid #00ff00;
@@ -79,7 +79,7 @@
 
     .search-bar:focus + .search-icon {
         transform: translateY(-50%) scale(1.2);
-        animation: pulse 1.5s infinite; /* Добавлен пульсирующий эффект */
+        animation: pulse 1.5s infinite;
     }
 
     @keyframes pulse {
@@ -97,13 +97,13 @@
     @media (max-width: 600px) {
         .search-bar {
             font-size: 15px;
-            padding: 10px 14px 10px 30px; /* Уменьшаем padding на мобильных устройствах */
+            padding: 10px 14px 10px 30px;
         }
     }
 
     @media (max-width: 400px) {
         .search-bar {
-            padding: 8px 12px 8px 24px; /* Еще больше уменьшаем padding на маленьких устройствах */
+            padding: 8px 12px 8px 24px; 
         }
     }
 
@@ -205,7 +205,7 @@
                 } else {
                     productCard.classList.remove('selected');
                     actionContainer.innerHTML = `
-                        <button class="add-btn added-animation" onclick="setQuantity(${productId}, 1)">ДОБАВИТЬ</button>
+                        <button class="add-btn added-animation" onclick="setQuantity(${productId}, 1)">ADD</button>
                     `;
                 }
 
