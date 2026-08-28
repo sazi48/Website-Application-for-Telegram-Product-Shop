@@ -177,7 +177,7 @@ def order():
         zavedenie = request.form['zavedenie']
 
         if not cart:
-            flash('Корзина пуста. Добавьте товары перед оформлением заказа.', 'danger')
+            flash('Your cart is empty. Please add items before checking out.', 'danger')
             return redirect(url_for('cart'))
 
         # Create an order
