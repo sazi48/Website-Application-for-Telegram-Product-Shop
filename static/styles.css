@@ -1,4 +1,4 @@
-/* === ШРИФТЫ === */
+/* === FONTS === */
 @font-face {
   font-family: 'benzin-semibold';
   src: url('/static/fonts/benzin-semibold.ttf') format('truetype');
@@ -8,7 +8,7 @@
   src: url('/static/fonts/Geologica.ttf') format('truetype');
 }
 
-/* === БАЗА === */
+/* === BASE === */
 body {
   margin: 0;
   background-color: #121212;
@@ -31,7 +31,7 @@ p {
 .mb-3 { margin-bottom: 15px; }
 .mt-4 { margin-top: 20px; }
 
-/* === ШАПКА === */
+/* === CAP === */
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -58,7 +58,7 @@ p {
   color: #00c853;
 }
 
-/* === КАТАЛОГ === */
+/* === CATALOG === */
 .catalog-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -95,7 +95,7 @@ p {
 
 .product-name {
   font-family: 'benzin-semibold', sans-serif;
-  font-size: 13px; /* Шрифт названия товара */
+  font-size: 13px; 
   margin-top: 4px;
   word-break: normal;
   overflow-wrap: break-word;
@@ -104,7 +104,7 @@ p {
 }
 
 .description {
-  font-size: 11px; /* Шрифт описания товара */
+  font-size: 11px; 
   color: #999;
   margin: 4px 0;
   flex-grow: 1;
@@ -129,7 +129,7 @@ p {
 .add-btn,
 .product button {
   font-size: 12px;
-  background-color: #1e1e1e; /* #00c853 */
+  background-color: #1e1e1e; 
   color: #00ff00;
   border: 1px solid #00ff00;
   border-radius: 6px;
@@ -144,7 +144,7 @@ p {
   color: black;
 }
 
-/* === КНОПКИ КОЛИЧЕСТВА === */
+/* === QUANTITY BUTTONS === */
 .quantity-controls {
   display: flex;
   align-items: center;
@@ -176,7 +176,7 @@ p {
   cursor: pointer;
 }
 
-/* === КОРЗИНА === */
+/* === BASKET === */
 .cart-container {
   display: flex;
   flex-direction: column;
@@ -259,7 +259,7 @@ p {
   color: white;
 }
 
-/* === КНОПКА КОРЗИНЫ === */
+/* === CART BUTTON === */
 .cart-icon {
   position: fixed;
   bottom: 16px;
@@ -283,7 +283,7 @@ p {
   100% { transform: scale(1); }
 }
 
-/* === КНОПКА ЗАКАЗА === */
+/* === ORDER BUTTON === */
 .order-button {
   background-color: #28a745;
   color: black;
@@ -305,7 +305,7 @@ p {
   transition: 0.5s ease;
 }
 
-/* === СТРАНИЦА ПОДТВЕРЖДЕНИЯ === */
+/* === CONFIRMATION PAGE === */
 .order-items {
   display: flex;
   flex-wrap: wrap;
@@ -343,7 +343,7 @@ p {
   margin: 0;
 }
 
-/* === ФОРМА ЗАКАЗА === */
+/* === ORDER FORM === */
 .checkout-form {
   display: flex;
   flex-direction: column;
@@ -372,7 +372,7 @@ p {
   box-shadow: 0 0 4px #00c85355;
 }
 
-/* === ССЫЛКА НАЗАД В КАТАЛОГ === */
+/* === LINK BACK TO CATALOG === */
 .catalog-link {
   display: inline-block;
   color: #0f0;
@@ -390,7 +390,7 @@ p {
   color: #000;
 }
 
-/* === АДАПТИВНОСТЬ === */
+/* === ADAPTABILITY === */
 @media (max-width: 480px) {
   .product {
     max-width: 105px;
@@ -424,7 +424,7 @@ p {
     margin: 1px 0;
     line-height: 1.2;
     margin-bottom: 2px;
-    font-weight: normal !important;/* Убираем жирность */
+    font-weight: normal !important;
     font-family: 'Geologica', sans-serif !important;
   }
 
@@ -448,9 +448,9 @@ p {
     }
 
   .quantity-controls button {
-    width: 20px;        /* Увеличено */
-    height: 20px;       /* Увеличено */
-    font-size: 12px;    /* Увеличено */
+    width: 20px;        
+    height: 20px;       
+    font-size: 12px;  
     padding: 0;
   }
 
