@@ -4,16 +4,16 @@
 <h1 class="cart-title">Ваша корзина</h1>
 {% if cart_items %}
 <div id="cart-note" class="cart-note">
-    <!-- содержимое обновляется скриптом -->
+
 </div>
 
 {% endif %}
 
 
 {% if not cart_items %}
-    <p style="text-align: center; color: white;">Корзина пуста.</p>
+    <p style="text-align: center; color: white;">The cart is empty.</p>
     <div style="text-align: center; margin-top: 20px;">
-        <a href="{{ url_for('catalog') }}" class="catalog-link">Перейти в каталог товаров</a>
+        <a href="{{ url_for('catalog') }}" class="catalog-link">Go to the product catalog</a>
     </div>
 {% else %}
     <div class="cart-container">
@@ -28,7 +28,7 @@
                     <button type="button" class="quantity-btn" onclick="updateQuantity({{ item.id }}, 'decrease')">−</button>
                     <div class="cart-item-quantity" id="quantity-{{ item.id }}">{{ item.quantity }}</div>
                     <button type="button" class="quantity-btn" onclick="updateQuantity({{ item.id }}, 'increase')">+</button>
-                    <button type="button" class="remove-btn" onclick="removeFromCart({{ item.id }})">Удалить</button>
+                    <button type="button" class="remove-btn" onclick="removeFromCart({{ item.id }})">Delete</button>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
     </div>
 
     <div style="text-align: center; margin-top: 20px;">
-        <a href="{{ url_for('order') }}" class="order-button">Оформить заказ</a>
+        <a href="{{ url_for('order') }}" class="order-button">Place an order</a>
     </div>
 {% endif %}
 
@@ -176,21 +176,21 @@
 
     .toast {
         visibility: hidden;
-        min-width: 200px;               /* стало меньше */
+        min-width: 200px;               
         margin-left: -100px;
         background-color: #121212;
         color: #00ff00;
         text-align: center;
-        border-radius: 10px;            /* чуть мягче */
-        padding: 10px 18px;             /* компактнее */
+        border-radius: 10px;            
+        padding: 10px 18px;             
         position: fixed;
         z-index: 9999;
         left: 50%;
-        bottom: 30px;                   /* чуть выше */
-        font-size: 14px;                /* меньше шрифт */
-        border: 1px solid #00ff00;      /* тоньше граница */
-        box-shadow: 0 0 4px #00ff00, 0 0 8px #00ff00; /* меньше свечения */
-        font-weight: 600;               /* чуть легче жирность */
+        bottom: 30px;                  
+        font-size: 14px;                
+        border: 1px solid #00ff00;     
+        box-shadow: 0 0 4px #00ff00, 0 0 8px #00ff00; 
+        font-weight: 600;             
         opacity: 0;
         transition: opacity 0.4s ease, transform 0.4s ease;
     }
@@ -280,7 +280,7 @@
     }
     @media (max-width: 480px) {
         .cart-item-card {
-            flex-direction: row; /* сохраняем горизонтально */
+            flex-direction: row;
             align-items: center;
         }
 
@@ -360,16 +360,16 @@
                         updateCartNote();
                         if (document.querySelectorAll('.cart-item-card').length === 0) {
                             document.querySelector('.cart-container').innerHTML = `
-                                <p style="text-align: center; color: white;">Корзина пуста.</p>
+                                <p style="text-align: center; color: white;">The cart is empty.</p>
                                 <div style="text-align: center; margin-top: 20px;">
-                                    <a href="{{ url_for('catalog') }}" class="catalog-link">Перейти в каталог товаров</a>
+                                    <a href="{{ url_for('catalog') }}" class="catalog-link">Go to the product catalog</a>
                                 </div>
                             `;
                         }
                     }, 400);
                 }
                 document.querySelectorAll('.cart-count').forEach(el => el.textContent = data.cart_count);
-                showToast("Товар удалён из корзины");
+                showToast("The item has been removed from the cart.");
             }
         });
     }
@@ -387,7 +387,7 @@
             if (data.success) {
                 if (data.new_quantity > 0) {
                     document.getElementById(`quantity-${productId}`).textContent = data.new_quantity;
-                    showToast(action === 'increase' ? "Добавлен ещё один товар" : "Уменьшено количество товара");
+                    showToast(action === 'increase' ? "One more product has been added" : "The quantity of goods has been reduced");
                 } else {
                     removeFromCart(productId);
                 }
@@ -428,8 +428,8 @@
 
         if (note) {
             if (totalQuantity > 0) {
-                const suffix = totalQuantity === 1 ? "товар" : (totalQuantity >= 2 && totalQuantity <= 4 ? "товара" : "товаров");
-                note.textContent = `${totalQuantity} ${suffix} – ${totalPrice} Рублей`;
+                const suffix = totalQuantity === 1 ? "product" : (totalQuantity >= 2 && totalQuantity <= 4 ? "products" : "product");
+                note.textContent = `${totalQuantity} ${suffix} – ${totalPrice} Rubles`;
             } else {
                 note.remove();
             }
@@ -438,6 +438,5 @@
 
 </script>
 
-<!-- Всплывающее уведомление -->
 <div id="toast" class="toast"></div>
 {% endblock %}
