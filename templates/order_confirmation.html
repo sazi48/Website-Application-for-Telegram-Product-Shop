@@ -2,18 +2,18 @@
 
 {% block content %}
 <div class="container">
-    <h2 class="thank-you-title">Спасибо за заказ!</h2>
-    <p class="thank-you-text">Ваш заказ принят. Мы свяжемся с вами в ближайшее время для уточнения деталей.</p>
+    <h2 class="thank-you-title">Thank you for your order!</h2>
+    <p class="thank-you-text">Your order has been accepted. We will contact you shortly to clarify the details.</p>
 
     <div class="order-details">
-        <p><strong>Имя:</strong> {{ order.name }}</p>
-        <p><strong>Адрес:</strong> {{ order.address }}</p>
-        <p><strong>Заведение:</strong> {{ order.zavedenie }}</p>
-        <p><strong>Телефон:</strong> {{ order.phone }}</p>
+        <p><strong>Name:</strong> {{ order.name }}</p>
+        <p><strong>Address:</strong> {{ order.address }}</p>
+        <p><strong>Institution:</strong> {{ order.zavedenie }}</p>
+        <p><strong>Telephone:</strong> {{ order.phone }}</p>
         <p><strong>Telegram user:</strong> {{ order.telegramuser }}</p>
     </div>
 
-    <h4 class="cart-header">Содержимое корзины:</h4>
+    <h4 class="cart-header">Cart contents:</h4>
 
     <div class="order-items">
         {% for item in cart_items %}
@@ -21,16 +21,16 @@
             <img src="/static/images/{{ item.image }}" alt="{{ item.name }}">
             <div class="order-item-info">
                 <h5>{{ item.name }}</h5>
-                <p>Количество: {{ item.quantity }} шт.</p>
+                <p>Quantity: {{ item.quantity }} шт.</p>
             </div>
         </div>
         {% endfor %}
     </div>
 
-    <p class="order-status"><strong>Статус:</strong> {{ order.status }}</p>
+    <p class="order-status"><strong>Status:</strong> {{ order.status }}</p>
 
     <div class="mt-4">
-        <a href="/" class="catalog-link neon-link">Вернуться в каталог</a>
+        <a href="/" class="catalog-link neon-link">Return to catalog</a>
     </div>
 </div>
 
@@ -83,8 +83,8 @@
         background-color: #1a1a1a;
         border-radius: 12px;
         padding: 12px;
-        border: 1px solid white; /* ← Добавлено */
-        box-shadow: none; /* ← Отключить зелёное свечение */
+        border: 1px solid white;
+        box-shadow: none;
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 
     }
@@ -95,8 +95,8 @@
         object-fit: cover;
         border-radius: 10px;
         margin-right: 16px;
-        border: 1px solid white; /* ← Добавлено */
-        box-shadow: none; /* ← Отключить зелёное свечение */
+        border: 1px solid white;
+        box-shadow: none;
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     }
 
